@@ -9,6 +9,6 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-Dzień dobry
+Dzień dobry i smacznej kawusi
 </body>
 </html>
