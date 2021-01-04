@@ -10,6 +10,9 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 Dzień dobry i smacznej kawusi
+<br/>
 Witam panowie miłego projektu
+<br/>
+dobre pomarańczowe
 </body>
 </html>
