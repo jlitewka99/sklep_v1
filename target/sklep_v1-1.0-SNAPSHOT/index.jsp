@@ -19,9 +19,14 @@
 <body>
     <!-- NavBar -->
     <jsp:include page="fragment/navbar.jspf" />
+    <!-- /NavBar -->
+    <!-- NavBar -->
+    <jsp:include page="fragment/searchbar.jspf" />
+    <!-- /NavBar -->
 
     <div class="container-fluid">
         <div class="row flex-column-reverse flex-md-row">
+            <!-- Categories -->
             <div class="col-md-3">
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action">Kategoria 1</a>
@@ -39,11 +44,24 @@
                     <a href="#" class="list-group-item list-group-item-action">Kategoria 3</a>
                     <a href="#" class="list-group-item list-group-item-action">Kategoria 4</a>
                     <a href="#" class="list-group-item list-group-item-action">Kategoria 5</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 3</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 4</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 5</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 3</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 4</a>
+                    <a href="#" class="list-group-item list-group-item-action">Kategoria 5</a>
                 </div>
             </div>
+            <!-- /Categories -->
+
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-8">
+                        <!-- Top slideshow -->
                         <section class="slider-for" data-sizes="50vw">
                             <div>
                                 <img src="https://via.placeholder.com/1500x700?text=1">
@@ -61,6 +79,8 @@
                                 <img src="https://via.placeholder.com/1500x700?text=5">
                             </div>
                         </section>
+                        <!-- /Top slideshow -->
+                        <!-- Bottom slideshow -->
                         <section class="slider-nav d-none d-sm-block" data-sizes="50vw">
                             <div>
                                 <img src="https://via.placeholder.com/1500x700?text=1">
@@ -78,18 +98,19 @@
                                 <img src="https://via.placeholder.com/1500x700?text=5">
                             </div>
                         </section>
+                        <!-- /Bottom slideshow -->
 
                     </div>
                     <div class="col-md-4">
-                        Tutaj sie cos da
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur inventore natus perspiciatis ut. Adipisci architecto asperiores assumenda consequuntur corporis distinctio eaque iusto molestias nisi vitae! Nihil pariatur quibusdam rem vero?
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 bg-primary">
-                        Tu coś będzie
+                    <div class="col-md-8">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque commodi dicta, dolores eligendi enim laborum natus nostrum rem rerum, saepe ut voluptate voluptatem? Dicta enim minima molestiae veniam veritatis?
                     </div>
-                    <div class="col-md-4 bg-info">
-                        Tutaj też
+                    <div class="col-md-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa dicta dolor, dolorem doloribus enim expedita fugit ipsa laborum laudantium non, nostrum quia, quisquam repudiandae sequi tempore vel. Excepturi, quaerat!
                     </div>
 
                 </div>
@@ -97,7 +118,7 @@
         </div>
     </div>
 
-
+    <jsp:include page="fragment/footer.jspf" />
 
 
     <!-- JS -->

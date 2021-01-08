@@ -33,3 +33,38 @@ html, body {
 .slick-current {
     opacity: 1;
 }
+
+.input-group.md-form.form-sm.form-1 input {
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.input-group.md-form.form-sm.form-2 input.amber-border {
+    border: 2px solid #22223b;
+}
+.bg-custom-1 {
+    background-color: #22223b;
+
+}
+
+.bg-custom-2 {
+    background-color: #4a4e69;
+
+}
+
+.bg-custom-3 {
+    background-color: #4a4e69;
+
+}
+
+.bg-custom-4 {
+    background-color: #22223b;
+
+}
