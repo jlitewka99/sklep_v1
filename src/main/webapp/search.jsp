@@ -41,7 +41,7 @@
         <!-- /Categories -->
 
         <div class="col-md-10">
-
+            <!-- Products -->
             <div class="row">
                 <div class="card mb-3">
                     <div class="row g-0">
@@ -258,7 +258,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- /Products -->
         </div>
     </div>
 </div>
