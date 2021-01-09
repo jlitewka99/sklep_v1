@@ -10,7 +10,7 @@
 </head>
 <body>
 <!-- NavBar -->
-<jsp:include page="fragment/navbar.jspf" />
+<jsp:include page="fragment/navbar.jsp" />
 <!-- /NavBar -->
 
 <!-- Searchbar -->

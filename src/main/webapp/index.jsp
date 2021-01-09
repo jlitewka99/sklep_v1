@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,16 @@
 </head>
 <body>
     <!-- NavBar -->
-    <jsp:include page="fragment/navbar.jspf" />
+    <jsp:include page="fragment/navbar.jsp" />
     <!-- /NavBar -->
 
     <!-- Searchbar -->
     <jsp:include page="fragment/searchbar.jspf" />
     <!-- /Searchbar -->
+
+
+
+
 
     <div class="container-fluid">
         <div class="row flex-column-reverse flex-md-row">

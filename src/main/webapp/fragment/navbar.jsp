@@ -1,3 +1,26 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+
+    Cookie sessionCookie = new Cookie("sessionCookie", "1");
+
+    sessionCookie.setMaxAge(60 * 60 * 24 * 365);
+    response.addCookie(sessionCookie);
+
+    Cookie[] theCookies = request.getCookies();
+
+    String cookieId = "0";
+    if (theCookies != null)
+    {
+        for (Cookie tempCookie : theCookies)
+        {
+            if ("sessionCookie".equals(tempCookie.getName()))
+            {
+                cookieId = tempCookie.getValue();
+            }
+        }
+    }
+%>
+<%= cookieId %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom-1">
     <div class="container-fluid p-3">
         <a class="navbar-brand" href="#">LitewkaBuy</a>
