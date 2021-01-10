@@ -1,23 +1,29 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-
-    Cookie sessionCookie = new Cookie("sessionCookie", "1");
-
-    sessionCookie.setMaxAge(60 * 60 * 24 * 365);
-    response.addCookie(sessionCookie);
-
-    Cookie[] theCookies = request.getCookies();
+    Cookie[] theCookies = request.getCookies(); // get cookies array
 
     String cookieId = "0";
-    if (theCookies != null)
+    if (theCookies != null) // check if any cookie exist
     {
         for (Cookie tempCookie : theCookies)
         {
-            if ("sessionCookie".equals(tempCookie.getName()))
+            if ("sessionCookie".equals(tempCookie.getName())) // if user id cookie exist
             {
                 cookieId = tempCookie.getValue();
+            }else
+            {
+                Cookie sessionCookie = new Cookie("sessionCookie", "1");
+
+                sessionCookie.setMaxAge(60 * 60 * 24 * 365);
+                response.addCookie(sessionCookie);
             }
         }
+    }else
+    {
+        Cookie sessionCookie = new Cookie("sessionCookie", "1");
+
+        sessionCookie.setMaxAge(60 * 60 * 24 * 365);
+        response.addCookie(sessionCookie);
     }
 %>
 <%= cookieId %>
