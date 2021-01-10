@@ -26,7 +26,6 @@
         response.addCookie(sessionCookie);
     }
 %>
-<%= cookieId %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom-1">
     <div class="container-fluid p-3">
         <a class="navbar-brand" href="#">LitewkaBuy</a>
