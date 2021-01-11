@@ -6,6 +6,7 @@
 
     <%@ include file="fragment/head.jspf" %>
 
+
     <!-- Page title -->
     <title>LitewkaBuy</title>
 </head>
@@ -15,8 +16,12 @@
     <!-- /NavBar -->
 
     <!-- Searchbar -->
-    <jsp:include page="fragment/searchbar.jspf" />
+    <jsp:include page="fragment/searchbar.jsp" />
     <!-- /Searchbar -->
+
+    <!-- Alerts -->
+    <jsp:include page="fragment/alerts.jsp" />
+    <!-- /Alerts -->
 
 
 
@@ -120,8 +125,6 @@
 
 
     <!-- JS -->
-    <!-- jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- slick.js -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/slick/slick.min.js"></script>
     <!-- Bootstrap -->
@@ -149,6 +152,7 @@
             });
         });
     </script>
+
 
 
 </body>

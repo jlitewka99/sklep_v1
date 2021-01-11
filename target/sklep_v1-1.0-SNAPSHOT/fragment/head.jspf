@@ -11,3 +11,5 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/slick/slick-theme.css">
 <!-- Custom CSS -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/css/style.css">
+<!-- jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

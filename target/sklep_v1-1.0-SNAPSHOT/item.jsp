@@ -13,7 +13,7 @@
 <!-- /NavBar -->
 
 <!-- Searchbar -->
-<jsp:include page="fragment/searchbar.jspf"/>
+<jsp:include page="fragment/searchbar.jsp"/>
 <!-- /Searchbar -->
 
 <div class="row justify-content-md-center" style="margin: 0px; padding: 0px;">

@@ -37,20 +37,22 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                                <li><a class="dropdown-item" href="logout">Wyloguj</a></li>
                             </ul>
                         </li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item pe-5">
-                            <a class="nav-link" href="#" role="button" aria-expanded="false">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
+                               role="button" aria-expanded="false">
                                 Zaloguj
                             </a>
                         </li>
                     </c:otherwise>
                 </c:choose>
-
             </ul>
         </div>
     </div>
 </nav>
+<jsp:include page="modallogin.jsp" />
+<jsp:include page="modalregister.jsp" />

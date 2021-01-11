@@ -14,7 +14,7 @@
 <!-- /NavBar -->
 
 <!-- Searchbar -->
-<jsp:include page="fragment/searchbar.jspf" />
+<jsp:include page="fragment/searchbar.jsp" />
 <!-- /Searchbar -->
 
 
