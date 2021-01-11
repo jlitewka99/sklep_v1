@@ -3,6 +3,8 @@
 <%
     Cookie[] theCookies = request.getCookies(); // get cookies array
 
+    boolean isLoggedIn = false;
+
     String cookieId = "0";
     if (theCookies != null) // check if any cookie exist
     {
@@ -11,7 +13,7 @@
             if ("sessionCookie".equals(tempCookie.getName())) // if user id cookie exist
             {
                 cookieId = tempCookie.getValue();
-            }else
+            }else // if cookie do not exist create new
             {
                 Cookie sessionCookie = new Cookie("sessionCookie", "0");
 
@@ -19,17 +21,22 @@
                 response.addCookie(sessionCookie);
             }
         }
-    }else
+    }else // if cookie do not exist create new
     {
         Cookie sessionCookie = new Cookie("sessionCookie", "0");
 
         sessionCookie.setMaxAge(60 * 60 * 24 * 365);
         response.addCookie(sessionCookie);
     }
+    if(cookieId.equals("1"))
+    {
+        isLoggedIn = true;
+    }
+    request.setAttribute("isLoggedIn", isLoggedIn);
 %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom-1">
     <div class="container-fluid p-3">
-        <a class="navbar-brand" href="#">LitewkaBuy</a>
+        <a class="navbar-brand" href="index.jsp">LitewkaBuy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,8 +50,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav  mb-2 mb-lg-0">
-                <c:choose>
-                <c:when test="${not cookieId.equals('0')}">
+                <c:if test="${isLoggedIn}">
                 <li class="nav-item dropdown pe-5">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Konto
@@ -58,15 +64,15 @@
                         <li><a class="dropdown-item" href="#">Wyloguj</a></li>
                     </ul>
                 </li>
-                </c:when>
-                    <c:otherwise>
+                </c:if>
+                <c:if test="${not isLoggedIn}">
                     <li class="nav-item pe-5">
                         <a class="nav-link" href="#" role="button" aria-expanded="false">
                             Zaloguj
                         </a>
                     </li>
-                    </c:otherwise>
-                </c:choose>
+                </c:if>
+
             </ul>
         </div>
     </div>
