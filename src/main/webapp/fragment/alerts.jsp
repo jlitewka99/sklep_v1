@@ -8,12 +8,12 @@
             html.addClass('show');
         }, 0);
     }
-
     var status = new URLSearchParams(window.location.search).get("status");
     if (status == "loggedin") {
         alert('Zalogowano', 'Zalogowano możesz korzystać z pełnej funkcjonalności serwisu.', 'alert-success');
     } else if (status == "loggedout") {
         alert('Wylogowano', 'Możesz się zalogować ponownie.', 'alert-success');
+    } else if (status == "error1") {
+        alert('Nie udało się zalogować', 'Sprawdź poprawność emaila i hasła.', 'alert-success');
     }
-
 </script>
