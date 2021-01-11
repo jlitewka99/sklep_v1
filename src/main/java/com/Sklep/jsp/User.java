@@ -1,7 +1,6 @@
 package com.Sklep.jsp;
 
-public class User
-{
+public class User {
     private String password;
     private String userID;
     private Status status;
@@ -13,19 +12,76 @@ public class User
     private UserData data_br;
     private Address address;
 
-    public User(String password, double opinion, String login, String name, String surname, String email, UserData data_br, Address address) {
-        this.password = password;
-        this.userID = "1";
-        this.status = Status.New;
-        this.opinion = opinion;
-        this.login = login;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.data_br = data_br;
-        this.address = address;
+    public User(String password,String password2, String login, String name, String surname, String email, UserData data_br, Address address) {
+        int returner = 0;
+
+        returner = data_checking(password, password2, login, name, surname, email);//sprawdzenie poszczególnych danych czy są dobre
+        //nie wiem jak to chcecie połączyć wię cnapiszę to w taki sposób żeby łatwo było to zmienić??? - Bartek
+
+        if (returner == 0) {
+            this.password = password;
+            this.userID = "1";
+            this.status = Status.New;
+            this.login = login;
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.data_br = data_br;
+            this.address = address;
+        } else {
+            System.out.println(" Mamy do czynienia z blendem nr. " + returner);
+        }
     }
 
+
+
+
+public int data_checking(String password,String password2, String login, String name, String surname, String email)
+        {
+
+            if(password_lenght( password)){return 1;}
+            if(password_comparison(password, password2)) {return 2;}
+            if(email_monkey(email)){return 3;}
+            if(general_lenght(login)){return 4;}
+            if(general_lenght(name)){return 5;}
+            if(general_lenght(surname)){return 6;}
+            //porównania związane z adresem i data trzeba zrobić w tamtych klasach i je tu wywołać po prostu
+            return 0;
+
+        }
+
+
+public boolean password_lenght(String password)
+{
+    if(password.length() < 6) {
+        return true;
+    }
+    else
+        return false;
+}
+public boolean password_comparison(String password, String password2)
+    {
+        if(password != password2) {
+            return true;
+        }
+        else
+            return false;
+    }
+public boolean email_monkey(String email) {
+    if(email.indexOf("@") < 0) {
+        return true;
+    }
+    else
+        return false;
+}
+    public boolean general_lenght(String example)
+    {
+        if(password.length() < 3) {
+            return true;
+        }
+        else
+            return false;
+    }
     public String getPassword() {
         return password;
     }
