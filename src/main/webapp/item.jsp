@@ -1,0 +1,107 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <%@ include file="fragment/head.jspf" %>
+    <!-- Page title -->
+    <title>LitewkaBuy</title>
+</head>
+<body>
+<!-- NavBar -->
+<jsp:include page="fragment/navbar.jsp"/>
+<!-- /NavBar -->
+
+<!-- Searchbar -->
+<jsp:include page="fragment/searchbar.jspf"/>
+<!-- /Searchbar -->
+
+<div class="container-fluid" style="padding: 0;">
+    <div class="row justify-content-md-center">
+        <!-- Pictures -->
+        <div class="col-md-5">
+            <!-- Top slideshow -->
+            <div class="slider-for" data-sizes="50vw">
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=1">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=2">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=3">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=4">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=5">
+                </div>
+            </div>
+            <!-- /Top slideshow -->
+            <!-- Bottom slideshow -->
+            <div class="slider-nav-item" data-sizes="50vw">
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=1">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=2">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=3">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=4">
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=5">
+                </div>
+            </div>
+            <!-- /Bottom slideshow-->
+        </div>
+        <!-- /Pictures -->
+        <div class="col-md-5">
+            <h1>Tytul</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti distinctio doloribus eum expedita, iure magnam maiores minima neque officiis omnis optio pariatur quibusdam quod ratione reprehenderit sit, vitae voluptatem.</p>
+        </div>
+    </div>
+</div>
+
+
+<jsp:include page="fragment/footer.jspf"/>
+
+
+<!-- JS -->
+<!-- jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- slick.js -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib/slick/slick.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+<!-- slick.js -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            // fade: true,
+            asNavFor: '.slider-nav-item'
+        });
+        $('.slider-nav-item').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            //dots: true,
+            arrows: false,
+            centerMode: true,
+            focusOnSelect: true
+        });
+    });
+</script>
+</body>
+</html>
