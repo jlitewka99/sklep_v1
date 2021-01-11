@@ -16,54 +16,54 @@
 <jsp:include page="fragment/searchbar.jspf"/>
 <!-- /Searchbar -->
 
-<div class="container-fluid" style="padding: 0;">
-    <div class="row justify-content-md-center">
-        <!-- Pictures -->
-        <div class="col-md-5">
-            <!-- Top slideshow -->
-            <div class="slider-for" data-sizes="50vw">
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=1">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=2">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=3">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=4">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=5">
-                </div>
+<div class="row justify-content-md-center" style="margin: 0px; padding: 0px;">
+    <!-- Pictures -->
+    <div class="col-md-5">
+        <!-- Top slideshow -->
+        <div class="slider-for">
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=1">
             </div>
-            <!-- /Top slideshow -->
-            <!-- Bottom slideshow -->
-            <div class="slider-nav-item" data-sizes="50vw">
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=1">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=2">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=3">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=4">
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/1500x700?text=5">
-                </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=2">
             </div>
-            <!-- /Bottom slideshow-->
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=3">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=4">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=5">
+            </div>
         </div>
-        <!-- /Pictures -->
-        <div class="col-md-5">
-            <h1>Tytul</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti distinctio doloribus eum expedita, iure magnam maiores minima neque officiis omnis optio pariatur quibusdam quod ratione reprehenderit sit, vitae voluptatem.</p>
+        <!-- /Top slideshow -->
+        <!-- Bottom slideshow -->
+        <div class="slider-nav-item">
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=1">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=2">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=3">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=4">
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/1500x700?text=5">
+            </div>
         </div>
+        <!-- /Bottom slideshow-->
+    </div>
+    <!-- /Pictures -->
+    <div class="col-md-5">
+        <h1>Tytul</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti distinctio doloribus eum
+            expedita, iure magnam maiores minima neque officiis omnis optio pariatur quibusdam quod ratione
+            reprehenderit sit, vitae voluptatem.</p>
     </div>
 </div>
 
@@ -82,7 +82,7 @@
         crossorigin="anonymous"></script>
 <!-- slick.js -->
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
