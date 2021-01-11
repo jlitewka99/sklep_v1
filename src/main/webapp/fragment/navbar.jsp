@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     Cookie[] theCookies = request.getCookies(); // get cookies array
 
@@ -12,7 +13,7 @@
                 cookieId = tempCookie.getValue();
             }else
             {
-                Cookie sessionCookie = new Cookie("sessionCookie", "1");
+                Cookie sessionCookie = new Cookie("sessionCookie", "0");
 
                 sessionCookie.setMaxAge(60 * 60 * 24 * 365);
                 response.addCookie(sessionCookie);
@@ -20,7 +21,7 @@
         }
     }else
     {
-        Cookie sessionCookie = new Cookie("sessionCookie", "1");
+        Cookie sessionCookie = new Cookie("sessionCookie", "0");
 
         sessionCookie.setMaxAge(60 * 60 * 24 * 365);
         response.addCookie(sessionCookie);
@@ -42,6 +43,8 @@
                 </li>
             </ul>
             <ul class="navbar-nav  mb-2 mb-lg-0">
+                <c:choose>
+                <c:when test="${not cookieId.equals('0')}">
                 <li class="nav-item dropdown pe-5">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Konto
@@ -55,6 +58,15 @@
                         <li><a class="dropdown-item" href="#">Wyloguj</a></li>
                     </ul>
                 </li>
+                </c:when>
+                    <c:otherwise>
+                    <li class="nav-item pe-5">
+                        <a class="nav-link" href="#" role="button" aria-expanded="false">
+                            Zaloguj
+                        </a>
+                    </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
     </div>
