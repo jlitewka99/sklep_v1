@@ -1,88 +1,37 @@
 package com.Sklep.jsp;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import org.junit.Assert;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserTest {
+class UserTest{
 
-    @Test
-    void getPassword() {
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
-    void setPassword() {
+    void testPassword_lenght() {
+
     }
 
     @Test
-    void getUserID() {
+    void testPassword_comparison() {
     }
 
     @Test
-    void setUserID() {
+    void testEmail_monkey() {
     }
 
     @Test
-    void getStatus() {
-    }
-
-    @Test
-    void setStatus() {
-    }
-
-    @Test
-    void getOpinion() {
-    }
-
-    @Test
-    void setOpinion() {
-    }
-
-    @Test
-    void getLogin() {
-    }
-
-    @Test
-    void setLogin() {
-    }
-
-    @Test
-    void getName() {
-    }
-
-    @Test
-    void setName() {
-    }
-
-    @Test
-    void getSurname() {
-    }
-
-    @Test
-    void setSurname() {
-    }
-
-    @Test
-    void getEmail() {
-    }
-
-    @Test
-    void setEmail() {
-    }
-
-    @Test
-    void getData_br() {
-    }
-
-    @Test
-    void setData_br() {
-    }
-
-    @Test
-    void getAddress() {
-    }
-
-    @Test
-    void setAddress() {
+    void testGeneral_lenght() {
     }
 }
