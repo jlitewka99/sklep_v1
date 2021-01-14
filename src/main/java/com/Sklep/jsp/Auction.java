@@ -1,15 +1,15 @@
 package com.Sklep.jsp;
 
-public class Auction
-{
-private UserData start;
-private UserData end;
-private String description;
-private String auctionID;
-private String name;
-private double price;
-private User seller;//takie warzywo
+public class Auction {
+    private String name;
+    private double price;
+    private String description;
+    private String auctionID;
 
+
+
+    private User seller;//takie warzywo
+/*
     public Auction(UserData start, UserData end, String description, String auctionID, String name, double price, User seller) {
         this.start = start;
         this.end = end;
@@ -35,6 +35,8 @@ private User seller;//takie warzywo
     public void setEnd(UserData end) {
         this.end = end;
     }
+    */
+
 
     public String getDescription() {
         return description;

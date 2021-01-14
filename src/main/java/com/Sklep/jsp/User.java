@@ -1,17 +1,40 @@
 package com.Sklep.jsp;
 
 public class User {
-    private String password;
     private String userID;
-    private Status status;
-    private double opinion;
     private String login;
-    private String name;
-    private String surname;
-    private String email;
-    private UserData data_br;
-    private Address address;
+    private Status status;
+    private Double rating;
 
+    public User(String userID, String login, Status status, Double rating) { // constructor
+        this.userID = userID;
+        this.login = login;
+        this.status = status;
+        this.rating = rating;
+    }
+
+    public User(String userID, String login) {
+        this.userID = userID;
+        this.login = login;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    /*
     public User(String password,String password2, String login, String name, String surname, String email, UserData data_br, Address address) {
         int returner = 0;
 
@@ -160,5 +183,9 @@ public boolean email_monkey(String email) {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
+    }*/
+    /*
+    * poprawić zgodnie z tymi danymi którę są w tej klasie teraz
+    * bo były rzeczy które rozdzielimy na inne klasy
+    * */
 }
