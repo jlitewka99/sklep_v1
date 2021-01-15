@@ -45,12 +45,49 @@ public class User {
         }
         else{
             if(password.length()>=6){
-                return 3;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
+                return 2;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
             }
             else{
-                return 4;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
+                return 3;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
             }
         }
+    }
+    public int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {
+        if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
+            return 1;                                                       //Niepoprawny email
+        }
+        if (login.length() < 4) {
+            return 2;                                                        //Niepoprawny login
+        }
+        if (!password.equals(repeatPassword)) {
+            return 3;                                                        //Podane hasła nie są identyczne
+        }
+        if (password.length() < 6) {
+            return 4;                                                        //Za krótkie hasło
+        }
+        boolean passwordLetter = false;
+        boolean passwordBig = false;
+        for (int i = 0; i < password.length(); i++) {
+            if ((password.charAt(i) >= 65 && password.charAt(i) <= 90)) {
+                passwordBig = true;
+                if (passwordLetter) {
+                    break;
+                }
+            }
+            if ((password.charAt(i) >= 48 && password.charAt(i) <= 57)) {
+                passwordLetter = true;
+                if (passwordBig) {
+                    break;
+                }
+            }
+        }
+        if (!passwordBig && !passwordLetter) {
+            return 5;                                                        //Za słabe hasło
+        }
+        if (postCode.length() < 6 || !postCode.contains("-")) {
+            return 6;                                                       //Zły kod pocztowy
+        }
+        return 0;
     }
     /*
     public User(String password,String password2, String login, String name, String surname, String email, UserData data_br, Address address) {
