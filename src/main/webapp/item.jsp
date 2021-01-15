@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*, com.databaseRelated.*" %>
-<%@ page import="com.Sklep.jsp.User" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.databaseRelated.*" %>
 <%@ page import="com.Sklep.jsp.Auction" %>
 
 <!DOCTYPE html>

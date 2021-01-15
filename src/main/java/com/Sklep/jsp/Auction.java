@@ -7,12 +7,14 @@ public class Auction {
     private String title;
     private String description;
     private double price;
+    private String category;
     private Date startDate;
     private Date endDate;
     private int numberOfPhotos;
     private String userId;
     private User user;
-
+//SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
+// temp
     public Auction(String auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, String userId) {
         this.auctionID = auctionID;
         this.title = title;
@@ -22,6 +24,14 @@ public class Auction {
         this.endDate = endDate;
         this.numberOfPhotos = numberOfPhotos;
         this.userId = userId;
+    }
+
+    public Auction(String auctionID, String title, String description, double price, String category) {
+        this.auctionID = auctionID;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
     }
 
     public void setUser(User user) {

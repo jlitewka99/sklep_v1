@@ -3,6 +3,7 @@ package com.Sklep.jsp;
 public class User {
     private String userID;
     private String login;
+    private String password;
     private Status status;
     private Double rating;
 
@@ -34,25 +35,23 @@ public class User {
         return rating;
     }
 
-    public int userLoginValidate(String login, String password){    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
-        if(login.length()>=4){
-            if(password.length()>=6){
+    public int userLoginValidate(String login, String password) {    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+        if (login.length() >= 4) {
+            if (password.length() >= 6) {
                 return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
-            }
-            else{
+            } else {
                 return 1;                                           //Funkcja zwraca 1, gdy login jest poprawny, ale hasło jest krótsze.
             }
-        }
-        else{
-            if(password.length()>=6){
+        } else {
+            if (password.length() >= 6) {
                 return 2;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
-            }
-            else{
+            } else {
                 return 3;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
             }
         }
     }
-    public int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {
+
+    public static int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {
         if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
             return 1;                                                       //Niepoprawny email
         }
@@ -240,7 +239,7 @@ public boolean email_monkey(String email) {
         this.address = address;
     }*/
     /*
-    * poprawić zgodnie z tymi danymi którę są w tej klasie teraz
-    * bo były rzeczy które rozdzielimy na inne klasy
-    * */
+     * poprawić zgodnie z tymi danymi którę są w tej klasie teraz
+     * bo były rzeczy które rozdzielimy na inne klasy
+     * */
 }

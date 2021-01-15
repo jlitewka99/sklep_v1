@@ -28,7 +28,7 @@ public class UserDbUtil {
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
 
-            while (myRs.next()) {
+            if (myRs.next()) {
                 String login = myRs.getString("login");
                 String status;
                 Double rating;

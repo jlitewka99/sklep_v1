@@ -1,9 +1,7 @@
 package com.Servlets;
 
 import com.Sklep.jsp.Auction;
-import com.Sklep.jsp.User;
 import com.databaseRelated.AuctionDbUtil;
-import com.databaseRelated.UserDbUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -11,65 +9,53 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "ProductServlet", value = "/product")
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", value = "/search")
+public class SearchServlet extends HttpServlet {
 
-    private String auctionId;
+    private String category;
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
 
-    private UserDbUtil userDbUtil;
     private AuctionDbUtil auctionDbUtil;
+
 
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            userDbUtil = new UserDbUtil(dataSource);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
             auctionDbUtil = new AuctionDbUtil(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        auctionId = request.getParameter("id");
+
+        category = request.getParameter("category");
 
         try {
-            getAuctionClass(request, response);
+            getAuctions(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
     }
 
-    private void getAuctionClass(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Auction auction = auctionDbUtil.getAuctionById(auctionId);
-        // get Auction class from database by ID
+    private void getAuctions(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-        auction.setUser(userDbUtil.getUserById(auction.getUserId()));
-        // create class of seller of that item
+        List<Auction> auctions = auctionDbUtil.getAuctionsByCategory(category);
 
-
-        request.setAttribute("AUCTION", auction);
+        request.setAttribute("AUCTIONS", auctions);
         // add Auction to the request
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/item.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
         // send to JSP page
     }
-
-
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
