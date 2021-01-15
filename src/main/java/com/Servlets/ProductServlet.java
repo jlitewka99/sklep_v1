@@ -30,17 +30,17 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().write(request.getParameter("id"));
+        String productId = request.getParameter("id");
         try {
-            getUserClass(request, response);
+            getUserClass(request, response, productId);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private void getUserClass(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        User user = userDbUtil.getUserById("1");
+    private void getUserClass(HttpServletRequest request, HttpServletResponse response, String userId) throws Exception {
+        User user = userDbUtil.getUserById(userId);
         // get User class from database by ID
 
         request.setAttribute("USER", user);
