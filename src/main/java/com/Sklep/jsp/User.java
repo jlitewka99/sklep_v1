@@ -45,10 +45,10 @@ public class User {
         }
         else{
             if(password.length()>=6){
-                return 3;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
+                return 2;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
             }
             else{
-                return 4;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
+                return 3;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
             }
         }
     }
