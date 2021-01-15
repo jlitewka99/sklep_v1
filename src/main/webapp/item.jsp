@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*, com.databaseRelated.*" %>
+<%@ page import="com.Sklep.jsp.User" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,11 @@
 <!-- Searchbar -->
 <jsp:include page="fragment/searchbar.jsp"/>
 <!-- /Searchbar -->
+
+<%
+    User user = (User)request.getAttribute("USER");
+%>
+<%= user.getLogin()%>
 
 <div class="row justify-content-md-center" style="margin: 0px; padding: 0px;">
     <!-- Pictures -->

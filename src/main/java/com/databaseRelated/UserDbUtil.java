@@ -1,8 +1,11 @@
-package com.Sklep.jsp;
+package com.databaseRelated;
+
+import com.Sklep.jsp.User;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDbUtil {
@@ -12,13 +15,12 @@ public class UserDbUtil {
         this.dataSource = dataSource;
     }
 
-    public User getUserById(String id) throws Exception{
+    public User getUserById(String id) throws Exception {
         Connection myConn = null;
         Statement myStmt = null;
         ResultSet myRs = null;
 
-
-        try{
+        try {
             myConn = dataSource.getConnection();
 
             String sql = "SELECT login FROM user WHERE id='" + id + "'";
@@ -26,15 +28,14 @@ public class UserDbUtil {
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
 
-            while(myRs.next()){
+            while (myRs.next()) {
                 String login = myRs.getString("login");
                 String status;
                 Double rating;
                 return new User(id, login);
             }
 
-        }
-        finally {
+        } finally {
             close(myConn, myStmt, myRs);
         }
         return null;
@@ -52,6 +53,8 @@ public class UserDbUtil {
             if (myRs != null) {
                 myRs.close();
             }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
