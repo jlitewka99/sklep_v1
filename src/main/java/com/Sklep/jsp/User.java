@@ -34,6 +34,24 @@ public class User {
         return rating;
     }
 
+    public int userLoginValidate(String login, String password){    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+        if(login.length()>=4){
+            if(password.length()>=6){
+                return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
+            }
+            else{
+                return 1;                                           //Funkcja zwraca 1, gdy login jest poprawny, ale hasło jest krótsze.
+            }
+        }
+        else{
+            if(password.length()>=6){
+                return 3;                                           //Funkcja zwraca 3, gdy login jest za krótki ale jest poprawne.
+            }
+            else{
+                return 4;                                           //Funkcja zwraca 4, gdy obie są nie poprawne.
+            }
+        }
+    }
     /*
     public User(String password,String password2, String login, String name, String surname, String email, UserData data_br, Address address) {
         int returner = 0;
