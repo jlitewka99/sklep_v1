@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*, com.databaseRelated.*" %>
 <%@ page import="com.Sklep.jsp.User" %>
+<%@ page import="com.Sklep.jsp.Auction" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,9 +20,8 @@
 <!-- /Searchbar -->
 
 <%
-    User user = (User)request.getAttribute("USER");
+    Auction auction = (Auction)request.getAttribute("AUCTION");
 %>
-<%= user.getLogin()%>
 
 <div class="row justify-content-md-center" style="margin: 0px; padding: 0px;">
     <!-- Pictures -->
@@ -67,10 +67,8 @@
     </div>
     <!-- /Pictures -->
     <div class="col-md-5">
-        <h1>Tytul</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deleniti distinctio doloribus eum
-            expedita, iure magnam maiores minima neque officiis omnis optio pariatur quibusdam quod ratione
-            reprehenderit sit, vitae voluptatem.</p>
+        <h1><%=auction.getTitle()%></h1>
+        <p><%=auction.getDescription()%> <%=auction.getUser().getLogin()%></p>
     </div>
 </div>
 

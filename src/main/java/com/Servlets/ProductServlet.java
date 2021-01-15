@@ -1,6 +1,8 @@
 package com.Servlets;
 
+import com.Sklep.jsp.Auction;
 import com.Sklep.jsp.User;
+import com.databaseRelated.AuctionDbUtil;
 import com.databaseRelated.UserDbUtil;
 
 import javax.annotation.Resource;
@@ -17,6 +19,7 @@ public class ProductServlet extends HttpServlet {
     private DataSource dataSource;
 
     private UserDbUtil userDbUtil;
+    private AuctionDbUtil auctionDbUtil;
 
     @Override
     public void init() throws ServletException {
@@ -26,30 +29,42 @@ public class ProductServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String productId = request.getParameter("id");
         try {
-            getUserClass(request, response, productId);
+            auctionDbUtil = new AuctionDbUtil(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private void getUserClass(HttpServletRequest request, HttpServletResponse response, String userId) throws Exception {
-        User user = userDbUtil.getUserById(userId);
-        // get User class from database by ID
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String productId = request.getParameter("id");
 
-        request.setAttribute("USER", user);
-        // add User to the request
+        try {
+            getAuctionClass(request, response, productId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void getAuctionClass(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
+        Auction auction = auctionDbUtil.getAuctionById(id);
+        // get Auction class from database by ID
+        auction.setUser(userDbUtil.getUserById(auction.getUserId()));
+
+
+        request.setAttribute("AUCTION", auction);
+        // add Auction to the request
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/item.jsp");
         dispatcher.forward(request, response);
-        // send ro JSP page
+        // send to JSP page
     }
+
+
 
 
     @Override
