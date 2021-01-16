@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.Sklep.jsp.Auction" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.AdditionalComponents.Category" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -21,23 +22,18 @@
 <!-- /Searchbar -->
 
 
+
 <div class="container-fluid">
     <div class="row">
         <!-- Categories -->
         <div class="col-md-2">
             <ul class="list-group">
+                <c:forEach var="tempCategory" items="${CATEGORIES}">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Cras justo odio
-                    <span class="badge bg-primary rounded-pill">14</span>
+                        ${tempCategory.category}
+                    <span class="badge bg-primary rounded-pill">${tempCategory.count}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Dapibus ac facilisis in
-                    <span class="badge bg-primary rounded-pill">2</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Morbi leo risus
-                    <span class="badge bg-primary rounded-pill">1</span>
-                </li>
+                </c:forEach>
             </ul>
         </div>
         <!-- /Categories -->

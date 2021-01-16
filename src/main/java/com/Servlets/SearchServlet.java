@@ -1,5 +1,6 @@
 package com.Servlets;
 
+import com.AdditionalComponents.Category;
 import com.Sklep.jsp.Auction;
 import com.databaseRelated.AuctionDbUtil;
 
@@ -38,17 +39,40 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
         category = request.getParameter("category");
 
+        try {
+            getCategories(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             getAuctions(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+
     }
 
+    private void getCategories(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
+
+        request.setAttribute("CATEGORIES", categories);
+        // add Auction to the request
+
+        //RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
+        //dispatcher.forward(request, response);
+        // send to JSP page
+    }
+
+
     private void getAuctions(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
+
+        request.setAttribute("CATEGORIES", categories);
 
         List<Auction> auctions = auctionDbUtil.getAuctionsByCategory(category);
 

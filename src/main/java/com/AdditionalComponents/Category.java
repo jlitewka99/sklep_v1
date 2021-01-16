@@ -13,7 +13,7 @@ public class Category {
         return category;
     }
 
-    public int getNumberOfCategories() {
+    public int getCount() {
         return count;
     }
 }

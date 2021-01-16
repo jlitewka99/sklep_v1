@@ -1,5 +1,6 @@
 package com.databaseRelated;
 
+import com.AdditionalComponents.Category;
 import com.Sklep.jsp.Auction;
 
 import javax.sql.DataSource;
@@ -12,6 +13,35 @@ public class AuctionDbUtil {
 
     public AuctionDbUtil(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public List<Category> getCategoriesOfSearch(String searchInput) throws Exception{
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = dataSource.getConnection();
+            //SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
+
+            String sql = "SELECT category, count(*) AS count FROM auction WHERE title LIKE '%" + searchInput + "%' GROUP BY category";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            List<Category> categories = new ArrayList<>();
+
+            while (myRs.next()) {
+                String category = myRs.getString("category");
+                int count = myRs.getInt("count");
+
+                Category tempCategory = new Category(category,count);
+                categories.add(tempCategory);
+            }
+            return categories;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
     }
 
     public List<Auction> getAuctionsByCategory(String category) throws Exception { // method returns auctions by category
