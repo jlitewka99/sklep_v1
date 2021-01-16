@@ -1,3 +1,3 @@
 sklep_v1
 
-Nasz projekt sklepu typu aukcje
+JSP shop Computer Science studies project 
