@@ -65,23 +65,23 @@ public class User {
         if (password.length() < 6) {
             return 4;                                                        //Jeżeli hasło jest za krótkie to zwracany jest kod błędu 4.
         }
-        boolean passwordLetter = false;                                      //Zmienna która będzie sprawdzała czy w haśle jest jedna litera.
+        boolean passwordNumber = false;                                      //Zmienna która będzie sprawdzała czy w haśle jest jedna litera.
         boolean passwordBig = false;                                         //Zmienna która będzie sprawdzała czy w haśle jest jedna wielka litera.
         for (int i = 0; i < password.length(); i++) {
-            if ((password.charAt(i) >= 65 && password.charAt(i) <= 90)) {    //Sprawdzenie czy dany znak jest wielką literą.
+            if (password.charAt(i) >= 'A' && password.charAt(i) <= 'Z') {    //Sprawdzenie czy dany znak jest wielką literą.
                 passwordBig = true;
-                if (passwordLetter) {                                        //Jeśli jest liczba oraz wielka litera to pętla jest przerwana.
+                if (passwordNumber) {                                        //Jeśli jest liczba oraz wielka litera to pętla jest przerwana.
                     break;
                 }
             }
-            if ((password.charAt(i) >= 48 && password.charAt(i) <= 57)) {   //Sprawdzenie czy dany znak jest liczbą.
-                passwordLetter = true;
+            if ((password.charAt(i) >= '0' && password.charAt(i) <= '9')) {   //Sprawdzenie czy dany znak jest liczbą.
+                passwordNumber = true;
                 if (passwordBig) {                                          //Jeśli jest liczba oraz wielka litera to pętla jest przerwana.
                     break;
                 }
             }
         }
-        if (!passwordBig && !passwordLetter) {
+        if (!passwordBig || !passwordNumber) {
             return 5;                                                        //Jeżeli hasło nie posiada wielkiej litery lub nie posiada liczby.
         }
         if (postCode.length() < 6 || !postCode.contains("-")) {
