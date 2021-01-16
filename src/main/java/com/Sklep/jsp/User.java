@@ -35,7 +35,7 @@ public class User {
         return rating;
     }
 
-    public int userLoginValidate(String login, String password) {    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+    public static int userLoginValidate(String login, String password) {    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
         if (login.length() >= 4) {
             if (password.length() >= 6) {
                 return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
