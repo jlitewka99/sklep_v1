@@ -17,7 +17,6 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-
     }
 
     @AfterEach
@@ -42,12 +41,28 @@ class UserTest {
     }
 
     @Test
-    void testUserLoginValidate() {
+    void test_userLoginValidate() {
         User testUser = new User("id", "login");
         List<String> loginPasswords = Arrays.asList("abcd", "abcdef", "abc");
         Assertions.assertAll(() -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(1)), 0),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(0)), 1),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(2), loginPasswords.get(1)), 2),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(2), loginPasswords.get(2)), 3));
+    }
+
+    @Test
+    void test_userRegisterValidate() {
+        User testUser = new User("id", "login");
+        List<String> loginPasswords = Arrays.asList("ama.rena@wp.pl", ".@wp.pl", "ama@wppl", "Pawel2", "pawel2", "pawell", "pa", "30-072", "30072", "300722");
+        Assertions.assertAll(() -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 0), //Test gdy wszystko jest poprawne.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(1), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 0),     //Test gdy email jest powiedzmy poprawny.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(2), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 1),     //Test gdy domena emaila jest niepoprawna.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(6), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 2),     //Test gdy login jest za krótki.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(4), loginPasswords.get(3), "eki", loginPasswords.get(7)), 3),     //Test gdy hasła nie są identyczne.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(6), loginPasswords.get(6), "eki", loginPasswords.get(7)), 4),     //Test gdy hasło jest za krótkie.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(4), loginPasswords.get(4), "eki", loginPasswords.get(7)), 5),     //Test gdy hasło nie posiada wielkiej litery
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(5), loginPasswords.get(5), "eki", loginPasswords.get(7)), 5),     //Test gdy hasło nie posiada liczby
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(8)), 6),     //Test gdy kod pocztowy jest zbyt krótki.
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(9)), 6));     //Test gdy kod pocztowy nie ma myślnika.
     }
 }
