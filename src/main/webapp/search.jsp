@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.Sklep.jsp.Auction" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +19,6 @@
 <!-- Searchbar -->
 <jsp:include page="fragment/searchbar.jsp" />
 <!-- /Searchbar -->
-
 
 
 <div class="container-fluid">
@@ -42,6 +44,7 @@
 
         <div class="col-md-10">
             <!-- Products -->
+            <c:forEach var="tempAuction" items="${AUCTIONS}">
             <div class="row">
                 <div class="card mb-3">
                     <div class="row g-0">
@@ -50,17 +53,17 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Nazwa produktu</h5>
+                                <h5 class="card-title">${tempAuction.title}</h5>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, animi autem enim fuga ipsa magnam molestias nam necessitatibus neque nobis placeat quisquam repellendus rerum, sed sequi unde ut vel voluptas.
+                                    ${tempAuction.description}
                                 </p>
-                                <p class="card-text"><small class="text-muted">Cena 200zł</small></p>
+                                <p class="card-text"><small class="text-muted">Cena ${tempAuction.price}zł</small></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            </c:forEach>
             <!-- /Products -->
         </div>
     </div>
