@@ -15,10 +15,8 @@ import java.util.List;
 @WebServlet(name = "SearchServlet", value = "/search")
 public class SearchServlet extends HttpServlet {
 
-    ////SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
-    //// temp
-
     private String category;
+    private String searchtext;
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
@@ -41,47 +39,49 @@ public class SearchServlet extends HttpServlet {
 
 
         category = request.getParameter("category");
+        searchtext = request.getParameter("searchtext");
 
+        if (searchtext == null) {
+            searchtext = "";
+        }
         try {
-            getCategories(request, response);
+            getCategoriesOfSearch(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            getAuctions(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if (category != null) {
+            try {
+                getAuctionsByCategory(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
-
-    }
-
-    private void getCategories(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
-
-        request.setAttribute("CATEGORIES", categories);
-        // add Auction to the request
-
-        //RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
-        //dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
+        dispatcher.forward(request, response);
         // send to JSP page
+
+    }
+
+    private void getCategoriesOfSearch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Category> categories = auctionDbUtil.getCategoriesOfSearch(searchtext);
+
+        request.setAttribute("CATEGORIES", categories);
+
     }
 
 
-    private void getAuctions(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    private void getAuctionsByCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
+        //List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
 
-        request.setAttribute("CATEGORIES", categories);
+        //request.setAttribute("CATEGORIES", categories);
 
         List<Auction> auctions = auctionDbUtil.getAuctionsByCategory(category);
 
         request.setAttribute("AUCTIONS", auctions);
         // add Auction to the request
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
-        dispatcher.forward(request, response);
-        // send to JSP page
     }
 
     @Override
