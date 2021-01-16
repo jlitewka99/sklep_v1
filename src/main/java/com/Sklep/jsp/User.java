@@ -34,7 +34,7 @@ public class User {
         return rating;
     }
 
-    public int userLoginValidate(String login, String password){    //Funckja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+    public int userLoginValidate(String login, String password){    //Funkcja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
         if(login.length()>=4){
             if(password.length()>=6){
                 return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
@@ -52,40 +52,40 @@ public class User {
             }
         }
     }
-    public int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {
+    public int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {         //Metoda sprawdza wstępnie dane podane przez użytkownika i zwraca odpowiednie kody błędów jeśli któraś jest niepoprawna.
         if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
-            return 1;                                                       //Niepoprawny email
+            return 1;                                                       //Zwraca 1 kiedy podano niepoprawny email.
         }
         if (login.length() < 4) {
-            return 2;                                                        //Niepoprawny login
+            return 2;                                                        //Zwraca 2 kiedy niepoprawny login.
         }
         if (!password.equals(repeatPassword)) {
-            return 3;                                                        //Podane hasła nie są identyczne
+            return 3;                                                        //Podane hasła nie są identyczne, wtedy zwracany jest kod błędu 3.
         }
         if (password.length() < 6) {
-            return 4;                                                        //Za krótkie hasło
+            return 4;                                                        //Jeżeli hasło jest za krótkie to zwracany jest kod błędu 4.
         }
-        boolean passwordLetter = false;
-        boolean passwordBig = false;
+        boolean passwordLetter = false;                                      //Zmienna która będzie sprawdzała czy w haśle jest jedna litera.
+        boolean passwordBig = false;                                         //Zmienna która będzie sprawdzała czy w haśle jest jedna wielka litera.
         for (int i = 0; i < password.length(); i++) {
-            if ((password.charAt(i) >= 65 && password.charAt(i) <= 90)) {
+            if ((password.charAt(i) >= 65 && password.charAt(i) <= 90)) {    //Sprawdzenie czy dany znak jest wielką literą.
                 passwordBig = true;
-                if (passwordLetter) {
+                if (passwordLetter) {                                        //Jeśli jest liczba oraz wielka litera to pętla jest przerwana.
                     break;
                 }
             }
-            if ((password.charAt(i) >= 48 && password.charAt(i) <= 57)) {
+            if ((password.charAt(i) >= 48 && password.charAt(i) <= 57)) {   //Sprawdzenie czy dany znak jest liczbą.
                 passwordLetter = true;
-                if (passwordBig) {
+                if (passwordBig) {                                          //Jeśli jest liczba oraz wielka litera to pętla jest przerwana.
                     break;
                 }
             }
         }
         if (!passwordBig && !passwordLetter) {
-            return 5;                                                        //Za słabe hasło
+            return 5;                                                        //Jeżeli hasło nie posiada wielkiej litery lub nie posiada liczby.
         }
         if (postCode.length() < 6 || !postCode.contains("-")) {
-            return 6;                                                       //Zły kod pocztowy
+            return 6;                                                        //Jeżeli kod pocztowy jest mniejszy niż 6 lub kod pocztowy nie zawiera znaku - to zwracany jest znak
         }
         return 0;
     }
