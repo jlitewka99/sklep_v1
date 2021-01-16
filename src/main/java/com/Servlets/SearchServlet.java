@@ -14,6 +14,9 @@ import java.util.List;
 @WebServlet(name = "SearchServlet", value = "/search")
 public class SearchServlet extends HttpServlet {
 
+    ////SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
+    //// temp
+
     private String category;
 
     @Resource(name = "jdbc/32403572_sklep")

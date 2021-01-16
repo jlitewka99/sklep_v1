@@ -13,8 +13,7 @@ public class Auction {
     private int numberOfPhotos;
     private String userId;
     private User user;
-//SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
-// temp
+
     public Auction(String auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, String userId) {
         this.auctionID = auctionID;
         this.title = title;
