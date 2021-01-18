@@ -50,6 +50,9 @@ public class Auction {
         if(description.length()<3 || description.length()>140){
             return 2;
         }
+        if(pictureCount<1){
+            return 3;
+        }
         return 0;
     }
 
