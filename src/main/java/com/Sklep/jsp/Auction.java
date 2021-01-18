@@ -14,6 +14,13 @@ public class Auction {
     private String userId;
     private User user;
 
+    public Auction(String auctionID, String title, String description, double price) {
+        this.auctionID = auctionID;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+    }
+
     public Auction(String auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, String userId) {
         this.auctionID = auctionID;
         this.title = title;

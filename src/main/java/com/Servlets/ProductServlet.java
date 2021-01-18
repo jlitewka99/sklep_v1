@@ -1,9 +1,8 @@
 package com.Servlets;
 
 import com.Sklep.jsp.Auction;
-import com.Sklep.jsp.User;
-import com.databaseRelated.AuctionDbUtil;
-import com.databaseRelated.UserDbUtil;
+import com.databaseRelated.AuctionDAO;
+import com.databaseRelated.UserDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -20,19 +19,19 @@ public class ProductServlet extends HttpServlet {
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
 
-    private UserDbUtil userDbUtil;
-    private AuctionDbUtil auctionDbUtil;
+    private UserDAO userDAO;
+    private AuctionDAO auctionDAO;
 
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            userDbUtil = new UserDbUtil(dataSource);
+            userDAO = new UserDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            auctionDbUtil = new AuctionDbUtil(dataSource);
+            auctionDAO = new AuctionDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,10 +52,10 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void getAuctionClass(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Auction auction = auctionDbUtil.getAuctionById(auctionId);
+        Auction auction = auctionDAO.getAuctionById(auctionId);
         // get Auction class from database by ID
 
-        auction.setUser(userDbUtil.getUserById(auction.getUserId()));
+        auction.setUser(userDAO.getUserById(auction.getUserId()));
         // create class of seller of that item
 
 

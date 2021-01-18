@@ -8,10 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserDbUtil {
+public class UserDAO {
     private DataSource dataSource;
 
-    public UserDbUtil(DataSource dataSource) {
+    public UserDAO(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 

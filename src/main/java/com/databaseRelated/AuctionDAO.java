@@ -1,6 +1,5 @@
 package com.databaseRelated;
 
-import com.AdditionalComponents.Category;
 import com.Sklep.jsp.Auction;
 
 import javax.sql.DataSource;
@@ -8,41 +7,75 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuctionDbUtil {
+public class AuctionDAO {
     private DataSource dataSource;
 
-    public AuctionDbUtil(DataSource dataSource) {
+    public AuctionDAO(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public List<Category> getCategoriesOfSearch(String searchInput) throws Exception{
+    public List<Auction> getAuctionsBySearchTextAndCategory(String text, String category) throws Exception { // method returns auctions by SearchText
         Connection myConn = null;
         Statement myStmt = null;
         ResultSet myRs = null;
         try {
             myConn = dataSource.getConnection();
-            //SELECT CategoryID, count(*) AS counter FROM Products GROUP BY CategoryID;
 
-            String sql = "SELECT category, count(*) AS count FROM auction WHERE title LIKE '%" + searchInput + "%' GROUP BY category";
+            String sql = "SELECT * FROM auction WHERE title LIKE '%" + text + "%' AND category='" + category +"'";
 
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
 
-            List<Category> categories = new ArrayList<>();
+            List<Auction> auctions = new ArrayList<>();
 
             while (myRs.next()) {
-                String category = myRs.getString("category");
-                int count = myRs.getInt("count");
+                String auctionID = myRs.getString("id");
+                String title = myRs.getString("title");
+                String description = myRs.getString("description");
+                Double price = myRs.getDouble("price");
 
-                Category tempCategory = new Category(category,count);
-                categories.add(tempCategory);
+                Auction tempAuction = new Auction(auctionID, title, description, price);
+                auctions.add(tempAuction);
             }
-            return categories;
+            return auctions;
 
         } finally {
             close(myConn, myStmt, myRs);
         }
+
     }
+
+    public List<Auction> getAuctionsBySearchText(String text) throws Exception { // method returns auctions by SearchText
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT * FROM auction WHERE title LIKE '%" + text + "%'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            List<Auction> auctions = new ArrayList<>();
+
+            while (myRs.next()) {
+                String auctionID = myRs.getString("id");
+                String title = myRs.getString("title");
+                String description = myRs.getString("description");
+                Double price = myRs.getDouble("price");
+
+                Auction tempAuction = new Auction(auctionID, title, description, price);
+                auctions.add(tempAuction);
+            }
+            return auctions;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+
+    }
+
 
     public List<Auction> getAuctionsByCategory(String category) throws Exception { // method returns auctions by category
         Connection myConn = null;

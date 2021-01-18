@@ -29,13 +29,21 @@
         <div class="col-md-2">
             <ul class="list-group">
                 <c:forEach var="tempCategory" items="${CATEGORIES}">
+                <c:choose>
+                <c:when test="${searchtext != null}">
+                <a style="text-transform: capitalize"
+                   href="search?category=${tempCategory.category}&searchtext=${searchtext}">
+                    </c:when>
+                    <c:otherwise>
                     <a style="text-transform: capitalize" href="search?category=${tempCategory.category}">
+                        </c:otherwise>
+                        </c:choose>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                 ${fn:toLowerCase(tempCategory.category)}
                             <span class="badge bg-primary rounded-pill">${tempCategory.count}</span>
                         </li>
                     </a>
-                </c:forEach>
+                    </c:forEach>
             </ul>
         </div>
         <!-- /Categories -->
@@ -43,26 +51,29 @@
         <div class="col-md-10">
             <!-- Products -->
             <c:forEach var="tempAuction" items="${AUCTIONS}">
-                <div class="row">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-2">
-                                <img src="https://via.placeholder.com/150x9000?text=1"
-                                     style="width: 100%; max-height: 200px; object-fit: cover;" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">${tempAuction.title}</h5>
-                                    <p class="card-text">
-                                            ${tempAuction.description}
-                                    </p>
-                                    <p class="card-text"><small class="text-muted">Cena ${tempAuction.price}zł</small>
-                                    </p>
+                <a href="product?id=${tempAuction.auctionID}">
+                    <div class="row">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
+                                    <img src="https://via.placeholder.com/150x9000?text=1"
+                                         style="width: 100%; max-height: 200px; object-fit: cover;" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${tempAuction.title}</h5>
+                                        <p class="card-text">
+                                                ${tempAuction.description}
+                                        </p>
+                                        <p class="card-text"><small
+                                                class="text-muted">Cena ${tempAuction.price}zł</small>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
             <!-- /Products -->
         </div>

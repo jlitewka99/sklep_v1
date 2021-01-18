@@ -2,7 +2,8 @@ package com.Servlets;
 
 import com.AdditionalComponents.Category;
 import com.Sklep.jsp.Auction;
-import com.databaseRelated.AuctionDbUtil;
+import com.databaseRelated.AuctionDAO;
+import com.databaseRelated.CategoryDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -10,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "SearchServlet", value = "/search")
@@ -21,14 +23,21 @@ public class SearchServlet extends HttpServlet {
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
 
-    private AuctionDbUtil auctionDbUtil;
+    private AuctionDAO auctionDAO;
+
+    private CategoryDAO categoryDAO;
 
 
     @Override
     public void init() throws ServletException {
         super.init();
         try {
-            auctionDbUtil = new AuctionDbUtil(dataSource);
+            auctionDAO = new AuctionDAO(dataSource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            categoryDAO = new CategoryDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,49 +49,93 @@ public class SearchServlet extends HttpServlet {
 
         category = request.getParameter("category");
         searchtext = request.getParameter("searchtext");
+        request.setAttribute("searchtext", searchtext);
 
-        if (searchtext == null) {
-            searchtext = "";
-        }
-        try {
-            getCategoriesOfSearch(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if (category != null && searchtext != null) {
+            try {
+                getAuctionsBySearchTextAndCategory(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                getCategoriesBySearchText(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (category == null && searchtext != null) {
+            try {
+                getAuctionsBySearchText(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                getCategoriesBySearchText(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (category == null && searchtext == null) {
 
-        if (category != null) {
+        } else if (category != null && searchtext == null) {
             try {
                 getAuctionsByCategory(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            try {
+                getAllCategories(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
         // send to JSP page
 
     }
 
-    private void getCategoriesOfSearch(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<Category> categories = auctionDbUtil.getCategoriesOfSearch(searchtext);
+    private void getAllCategories(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        List<Category> categories = categoryDAO.getAllCategories();
 
         request.setAttribute("CATEGORIES", categories);
+        // add Categories to the request
+    }
 
+    private void getAuctionsBySearchText(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        List<Auction> auctions = auctionDAO.getAuctionsBySearchText(searchtext);
+
+        request.setAttribute("AUCTIONS", auctions);
+        // add Auctions to the request
+    }
+
+    private void getAuctionsBySearchTextAndCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        List<Auction> auctions = auctionDAO.getAuctionsBySearchTextAndCategory(searchtext, category);
+
+        request.setAttribute("AUCTIONS", auctions);
+        // add Auctions to the request
+    }
+
+    private void getCategoriesBySearchText(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        List<Category> categories = categoryDAO.getCategoriesBySearchText(searchtext);
+
+        request.setAttribute("CATEGORIES", categories);
+        // add Categories to the request
     }
 
 
     private void getAuctionsByCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        //List<Category> categories = auctionDbUtil.getCategoriesOfSearch("a");
-
-        //request.setAttribute("CATEGORIES", categories);
-
-        List<Auction> auctions = auctionDbUtil.getAuctionsByCategory(category);
+        List<Auction> auctions = auctionDAO.getAuctionsByCategory(category);
 
         request.setAttribute("AUCTIONS", auctions);
-        // add Auction to the request
-
+        // add Auctions to the request
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
