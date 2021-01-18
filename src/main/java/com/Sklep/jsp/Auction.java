@@ -44,6 +44,9 @@ public class Auction {
         this.category = category;
     }
     public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate){
+        if(title.length()<3){
+            return 1;
+        }
         return 0;
     }
 
