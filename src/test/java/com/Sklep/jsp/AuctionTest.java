@@ -23,7 +23,8 @@ class AuctionTest {
                 () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate),0),  //Zwracane jest 0, gdy podano właściwe dane
                 () -> Assertions.assertEquals(auctionTest.auctionValidate("t", "description", 2, "moda", tomorrowDate),1),     //Zwracane jest 1, gdy tytuł jest za krótki
                 () -> Assertions.assertEquals(auctionTest.auctionValidate(longString, "description", 2, "moda", tomorrowDate),1),  //Zwracane jest 1, gdy tytuł jest za długi
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "de", 2, "moda", tomorrowDate),2));          //Zwracane jest 2, gdy opis jest za krótki
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "de", 2, "moda", tomorrowDate),2),          //Zwracane jest 2, gdy opis jest za krótki
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", longString, 2, "moda", tomorrowDate),2));            //Zwracane jest 2, gdy opis jest za długi
     }
 
     @Test
