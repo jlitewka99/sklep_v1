@@ -43,23 +43,26 @@ public class Auction {
         this.price = price;
         this.category = category;
     }
-    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price){
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price){    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
         if(title.length()<3 || title.length()>40){
-            return 1;
+            return 1;                                                                                                               //Zwracane jest 1, gdy tytuł jest za krótki lub za długi
         }
         if(description.length()<3 || description.length()>140){
-            return 2;
+            return 2;                                                                                                               //Zwracane jest 2, gdy opis jest za krótki lub za długi
         }
         if(pictureCount<1){
-            return 3;
+            return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć
         }
         if(!categoryList.contains(category)){
-            return 4;
+            return 4;                                                                                                               //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
         }
         if(endDate.before(new Date(System.currentTimeMillis()))){
-            return 5;
+            return 5;                                                                                                               //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
         }
-        return 0;
+        if(price<=0){
+            return 6;                                                                                                               //Zwracane jest 6 gdy cena jest mniejsza od 0
+        }
+        return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
     }
 
     public void setUser(User user) {
