@@ -56,6 +56,9 @@ public class Auction {
         if(!categoryList.contains(category)){
             return 4;
         }
+        if(endDate.before(new Date(System.currentTimeMillis()))){
+            return 5;
+        }
         return 0;
     }
 
