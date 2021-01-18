@@ -43,7 +43,7 @@ public class Auction {
         this.price = price;
         this.category = category;
     }
-    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate){
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price){
         if(title.length()<3 || title.length()>40){
             return 1;
         }

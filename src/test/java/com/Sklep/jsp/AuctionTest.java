@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AuctionTest {
     private Auction auctionTest;
     @BeforeEach
@@ -21,14 +19,15 @@ class AuctionTest {
         Date tomorrowDate = new Date(System.currentTimeMillis()+(24*60*60*1000)); //Aktualna data plus jeden dzień (jutro)
         Date yesterdayDate = new Date(System.currentTimeMillis()-(24*60*60*1000)); //Aktualna data plus jeden dzień (dziś)
         Assertions.assertAll(
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate),0),  //Zwracane jest 0, gdy podano właściwe dane
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("t", "description", 2, "moda", tomorrowDate),1),     //Zwracane jest 1, gdy tytuł jest za krótki
-                () -> Assertions.assertEquals(auctionTest.auctionValidate(longString, "description", 2, "moda", tomorrowDate),1),  //Zwracane jest 1, gdy tytuł jest za długi
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "de", 2, "moda", tomorrowDate),2),          //Zwracane jest 2, gdy opis jest za krótki
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", longString, 2, "moda", tomorrowDate),2),            //Zwracane jest 2, gdy opis jest za długi
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 0, "moda", tomorrowDate),3),    //Zwracane jest 3, gdy nie wysłano zdjęć
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "benzynka", tomorrowDate),4), //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", yesterdayDate),5)); //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate, 15.50),0),  //Zwracane jest 0, gdy podano właściwe dane
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("t", "description", 2, "moda", tomorrowDate, 15.50),1),     //Zwracane jest 1, gdy tytuł jest za krótki
+                () -> Assertions.assertEquals(auctionTest.auctionValidate(longString, "description", 2, "moda", tomorrowDate, 15.50),1),  //Zwracane jest 1, gdy tytuł jest za długi
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "de", 2, "moda", tomorrowDate, 15.50),2),          //Zwracane jest 2, gdy opis jest za krótki
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", longString, 2, "moda", tomorrowDate, 15.50),2),            //Zwracane jest 2, gdy opis jest za długi
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 0, "moda", tomorrowDate, 15.50),3),    //Zwracane jest 3, gdy nie wysłano zdjęć
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "benzynka", tomorrowDate, 15.50),4), //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", yesterdayDate, 15.50),5), //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate, 0),6));     //Zwracane jest 6 gdy cena jest mniejsza od 0.
     }
 
     @Test
