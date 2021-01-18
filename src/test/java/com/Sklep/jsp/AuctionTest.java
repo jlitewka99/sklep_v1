@@ -26,7 +26,8 @@ class AuctionTest {
                 () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "de", 2, "moda", tomorrowDate),2),          //Zwracane jest 2, gdy opis jest za krótki
                 () -> Assertions.assertEquals(auctionTest.auctionValidate("title", longString, 2, "moda", tomorrowDate),2),            //Zwracane jest 2, gdy opis jest za długi
                 () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 0, "moda", tomorrowDate),3),    //Zwracane jest 3, gdy nie wysłano zdjęć
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "benzynka", tomorrowDate),4)); //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "benzynka", tomorrowDate),4), //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "benzynka", tomorrowDate),5)); //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
     }
 
     @Test
