@@ -1,5 +1,6 @@
 package com.Sklep.jsp;
 
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,9 +15,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
+    private User testUser;
 
     @BeforeEach
     void setUp() {
+        testUser = new User("id", "login");
     }
 
     @AfterEach
@@ -42,7 +45,6 @@ class UserTest {
 
     @Test
     void test_userLoginValidate() {
-        User testUser = new User("id", "login");
         List<String> loginPasswords = Arrays.asList("abcd", "abcdef", "abc");
         Assertions.assertAll(() -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(1)), 0),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(0)), 1),
@@ -52,7 +54,6 @@ class UserTest {
 
     @Test
     void test_userRegisterValidate() {
-        User testUser = new User("id", "login");
         List<String> loginPasswords = Arrays.asList("ama.rena@wp.pl", ".@wp.pl", "ama@wppl", "Pawel2", "pawel2", "pawell", "pa", "30-072", "30072", "300722");
         Assertions.assertAll(() -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 0), //Test gdy wszystko jest poprawne.
                 () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(1), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7)), 0),     //Test gdy email jest powiedzmy poprawny.

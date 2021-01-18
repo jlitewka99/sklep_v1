@@ -1,12 +1,16 @@
 package com.Sklep.jsp;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Auction {
     private String auctionID;
     private String title;
     private String description;
     private double price;
+    public static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "dziecko", "zdrowie", "sport", "motoryzacja"));
     private String category;
     private Date startDate;
     private Date endDate;
@@ -39,6 +43,7 @@ public class Auction {
         this.price = price;
         this.category = category;
     }
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate);
 
     public void setUser(User user) {
         this.user = user;

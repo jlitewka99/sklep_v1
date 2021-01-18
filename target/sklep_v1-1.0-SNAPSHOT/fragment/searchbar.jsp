@@ -16,7 +16,6 @@
                                placeholder="Wyszukiwarka" aria-label="Search">
                     </c:otherwise>
                 </c:choose>
-
                 <div class="input-group-append">
                     <input type="submit" class="input-group-text" value="Wyszukaj"
                            style="background-color: #2e2d2d; color: white; border: black;" id="basic-text1">
