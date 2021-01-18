@@ -43,7 +43,9 @@ public class Auction {
         this.price = price;
         this.category = category;
     }
-    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate);
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate){
+        return 0;
+    }
 
     public void setUser(User user) {
         this.user = user;

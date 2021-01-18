@@ -18,7 +18,8 @@ class AuctionTest {
     void test_auctionValidate(){
         Date tomorrowDate = new Date(System.currentTimeMillis()+86400); //Aktualna data plus jeden dzień
         Assertions.assertAll(
-                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate),0));
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("title", "description", 2, "moda", tomorrowDate),0),  //Zwracane jest 0, gdy podano właściwe dane
+                () -> Assertions.assertEquals(auctionTest.auctionValidate("t", "description", 2, "moda", tomorrowDate),1));     //Zwracane jest 1, gdy tytuł jest za krótki
     }
 
     @Test
