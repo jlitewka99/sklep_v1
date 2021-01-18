@@ -53,6 +53,9 @@ public class Auction {
         if(pictureCount<1){
             return 3;
         }
+        if(!categoryList.contains(category)){
+            return 4;
+        }
         return 0;
     }
 
