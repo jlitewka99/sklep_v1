@@ -47,10 +47,7 @@ public class Auction {
         if(title.length()<3 || title.length()>40){
             return 1;
         }
-        if(description.length()<3){
-            return 2;
-        }
-        if(description.length()>140){
+        if(description.length()<3 || description.length()>140){
             return 2;
         }
         return 0;
