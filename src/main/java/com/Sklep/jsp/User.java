@@ -8,11 +8,8 @@ public class User {
     private String city;
     private String street;
     private String postCode;
-    private Status status;
     private Double avgRating;
     private int numberOfRatings;
-
-
 
     public User(String userID, String login) {
         this.userID = userID;
@@ -45,10 +42,6 @@ public class User {
 
     public String getPostCode() {
         return postCode;
-    }
-
-    public Status getStatus() {
-        return status;
     }
 
     public Double getAvgRating() {
