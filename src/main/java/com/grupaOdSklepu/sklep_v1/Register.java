@@ -2,15 +2,24 @@ package com.grupaOdSklepu.sklep_v1;
 
 import com.Sklep.jsp.Status;
 import com.Sklep.jsp.User;
+import com.databaseRelated.UserDAO;
 
+import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "register", value = "/register")
 public class Register extends HttpServlet {
+
+    @Resource(name = "jdbc/32403572_sklep")
+    private DataSource dataSource;
+
+    private UserDAO userDAO;
+
     private String userID;
     private String login;
     private String password;

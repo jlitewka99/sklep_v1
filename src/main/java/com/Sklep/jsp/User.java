@@ -11,8 +11,6 @@ public class User {
     private Double avgRating;
     private int numberOfRatings;
 
-
-
     public User(String userID, String login) {
         this.userID = userID;
         this.login = login;
@@ -45,7 +43,6 @@ public class User {
     public String getPostCode() {
         return postCode;
     }
-
 
     public Double getAvgRating() {
         return avgRating;
