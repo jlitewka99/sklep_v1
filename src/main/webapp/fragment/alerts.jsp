@@ -17,6 +17,20 @@
     } else if (status == "loggedout") {
         alert('Wylogowano!', 'Możesz się zalogować ponownie.', 'alert-success');
     } else if (status == "register_error1") { // register returns error code depending on error in registerValidator
-        alert('Nie udało się zarejestrować', 'Sprawdź poprawność emaila i hasła.', 'alert-warning');
+        alert('Nie udało się zarejestrować', 'Sprawdź poprawność emaila.', 'alert-warning');
+    } else if (status == "register_error2") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'Sprawdź poprawność loginu.', 'alert-warning');
+    } else if (status == "register_error3") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'Podane hasła nie są identyczne', 'alert-warning');
+    } else if (status == "register_error4") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'Za krótkie hasło', 'alert-warning');
+    } else if (status == "register_error5") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'za słabe hasło', 'alert-warning');
+    } else if (status == "register_error6") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'niepoprawny kod pocztowy', 'alert-warning');
+    } else if (status == "register_error7") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'nie wpisano prawidłowego addresu', 'alert-warning');
+    else if (status == "register_error8") { // register returns error code depending on error in registerValidator
+            alert('Nie udało się zarejestrować', 'zajęty login', 'alert-warning');
     }
 </script>
