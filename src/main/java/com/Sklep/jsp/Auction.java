@@ -1,12 +1,16 @@
 package com.Sklep.jsp;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Auction {
     private String auctionID;
     private String title;
     private String description;
     private double price;
+    public static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "dziecko", "zdrowie", "sport", "motoryzacja"));
     private String category;
     private Date startDate;
     private Date endDate;
@@ -38,6 +42,27 @@ public class Auction {
         this.description = description;
         this.price = price;
         this.category = category;
+    }
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price){    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
+        if(title.length()<3 || title.length()>40){
+            return 1;                                                                                                               //Zwracane jest 1, gdy tytuł jest za krótki lub za długi
+        }
+        if(description.length()<3 || description.length()>140){
+            return 2;                                                                                                               //Zwracane jest 2, gdy opis jest za krótki lub za długi
+        }
+        if(pictureCount<1){
+            return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć
+        }
+        if(!categoryList.contains(category)){
+            return 4;                                                                                                               //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
+        }
+        if(endDate.before(new Date(System.currentTimeMillis()))){
+            return 5;                                                                                                               //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
+        }
+        if(price<=0){
+            return 6;                                                                                                               //Zwracane jest 6 gdy cena jest mniejsza od 0
+        }
+        return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
     }
 
     public void setUser(User user) {
