@@ -66,7 +66,10 @@ public class User {
     }
 
     public static int userLoginValidate(String login, String password){    //Funkcja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
-       if(login.contains("'") || login.contains("\"") ||  password.contains("'") || password.contains("\"")){
+        if(login==null || password==null ) {
+            return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
+        }
+        if(login.contains("'") || login.contains("\"") ||  password.contains("'") || password.contains("\"")){
            return 4;                                                //Funkcja zwraca 4 gdy dane zawierają niedozwolone znaki
        }
         if(login.length()>=4){
@@ -87,6 +90,9 @@ public class User {
         }
     }
     public static int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode, String street) {         //Metoda sprawdza wstępnie dane podane przez użytkownika i zwraca odpowiednie kody błędów jeśli któraś jest niepoprawna.
+        if(email==null || login==null  || password==null || repeatPassword==null || city==null || postCode==null || street==null) {
+            return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
+        }
         if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
             return 1;                                                       //Zwraca 1 kiedy podano niepoprawny email.
         }
@@ -133,6 +139,13 @@ public class User {
         }
         if(!containsNumber){
             return 7;                                                           //Jeżeli w miejscu ulicy nie wpisano żadnej liczby to zwracany jest błąd 7
+        }
+        if(city.length()<3){
+            return 8;                                                           //Jeżeli nazwa miejscowości jest mniejsza od 3 to zwracany jest błąd 8
+        }
+        if (email.contains("'") || email.contains("\"") || login.contains("'") || login.contains("\"") || password.contains("'") || password.contains("\"") ||
+                city.contains("'") || city.contains("\"") || postCode.contains("'") || postCode.contains("\"") || street.contains("'") || street.contains("\"")) {
+            return 9;                                                             //Jeśli któraś zmienna zawiera niepoprawny znak to zwracane jest 9
         }
         return 0;
     }

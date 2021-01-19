@@ -45,7 +45,9 @@ class UserTest {
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(2), loginPasswords.get(1)), 2),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(2), loginPasswords.get(2)), 3),
                 () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0)+"'", loginPasswords.get(1)), 4),
-                () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(1)+"\""), 4));
+                () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), loginPasswords.get(1)+"\""), 4),
+                () -> Assertions.assertEquals(testUser.userLoginValidate(null, loginPasswords.get(1)), 100),
+                () -> Assertions.assertEquals(testUser.userLoginValidate(loginPasswords.get(0), null), 100));
     }
 
     @Test
@@ -63,7 +65,11 @@ class UserTest {
                 () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(9), "127"), 6),     //Test gdy kod pocztowy nie ma myślnika.
                 () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7), ""), 7),      //Test gdy nie podano ulicy
                 () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7), "Mazowiecka"), 7), //Test gdy nie podano żadnej liczby w polu ulica
-                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki'", loginPasswords.get(7), "127"),8),        //Test gdy podano nieprawidłowy znak w danych
-                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3)+"\"", loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7), "127"),8));        //Test gdy podano nieprawidłowy znak w danych
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "ek", loginPasswords.get(7), "127"), 8),          //Test gdy jest za krótka nazwa miasta
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), "eki'", loginPasswords.get(7), "127"),9),        //Test gdy podano nieprawidłowy znak w danych
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3)+"\"", loginPasswords.get(3), loginPasswords.get(3), "eki", loginPasswords.get(7), "127"),9),        //Test gdy podano nieprawidłowy znak w danych
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(loginPasswords.get(0), loginPasswords.get(3), null, loginPasswords.get(3), "eki", loginPasswords.get(7), "127"), 100),           //Test gdy wysłany został null do funkcji
+                () -> Assertions.assertEquals(testUser.userRegisterValidate(null, loginPasswords.get(3), loginPasswords.get(3), loginPasswords.get(3), null, loginPasswords.get(7), "127"), 100));          //Test gdy wysłany został null do funkcji
+
     }
 }

@@ -45,6 +45,9 @@ public class Auction {
     }
 
     public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
+        if(title==null || description==null  || category==null || endDate==null){
+            return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
+        }
         if (title.length() < 3 || title.length() > 40) {
             return 1;                                                                                                               //Zwracane jest 1, gdy tytuł jest za krótki lub za długi
         }
@@ -66,10 +69,14 @@ public class Auction {
         if (title.contains("'") || title.contains("\"") || description.contains("'") || description.contains("\"") || category.contains("'") || category.contains("\"")) {
             return 7;                                                                                                               //Jeśli któraś zmienna zawiera niepoprawny znak to zwracane jest 7
         }
+
         return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
     }
 
     public static String deleteIllegalCharacters(String phrase) {                                                   //Metoda zwracająca ciąg znaków po usunięciu znaków niedozwolonych czyli " oraz '
+        if(phrase==null){
+            return "";
+        }
         for (int i = 0; i < phrase.length(); i++) {
             if (phrase.charAt(i) == 39 || phrase.charAt(i) == 34) {
                 phrase = phrase.substring(0, i) + phrase.substring(i + 1);
