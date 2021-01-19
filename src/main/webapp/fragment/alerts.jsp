@@ -45,5 +45,5 @@
         alert('Nie udało się wystawić produktu', 'Nie poprawna data zakończenia aukcji.', 'alert-warning');
     } else if (status == "auction_error6") { // register returns error code depending on error in registerValidator
         alert('Nie udało się wystawić produktu', 'Niepoprawna cena produktu.', 'alert-warning');
-    }
+    }//login_error0 <- jak nie ma takiego loginu/hasla
 </script>
