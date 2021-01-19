@@ -1,5 +1,6 @@
 package com.grupaOdSklepu.sklep_v1;
 
+import com.AdditionalComponents.Cookies;
 import com.Sklep.jsp.User;
 import com.databaseRelated.UserDAO;
 
@@ -37,9 +38,11 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int status = User.userLoginValidate(login, password);
-        login = request.getParameter("loginRegister");
+
+        login = request.getParameter("loginLogin");
         password = request.getParameter("passwordRegister");
+
+        int status = User.userLoginValidate(login, password);
 
         User user = null;
         try {
@@ -50,6 +53,7 @@ public class Login extends HttpServlet {
 
         if (status == 0) {
             if (user != null) {
+                Cookies.setSessionCookie(request, response, user);
                 response.sendRedirect(request.getContextPath() + "/index?status=loggedin");
             } else {
                 response.sendRedirect(request.getContextPath() + "/index?status=login_error0");

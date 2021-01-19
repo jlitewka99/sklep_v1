@@ -9,11 +9,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="loginLogin">Login</label>
-                    <input type="text" class="form-control" id="loginLogin" placeholder="Login" required>
+                    <input type="text" class="form-control" id="loginLogin" name="loginLogin" placeholder="Login" required>
                 </div>
                 <div class="form-group">
                     <label for="passwordLogin">Hasło</label>
-                    <input type="password" class="form-control" id="passwordLogin" placeholder="Hasło" required>
+                    <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Hasło" required>
                 </div>
             </div>
             <div class="modal-footer">
