@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
         login = request.getParameter("loginRegister");
         password = request.getParameter("passwordRegister");
 
-        User user;
+        User user = null;
         try {
             user = userDAO.login(login, password);
         } catch (Exception e) {
