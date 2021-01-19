@@ -57,6 +57,9 @@ public class User {
     }
 
     public static int userLoginValidate(String login, String password){    //Funkcja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+       if(login.contains("'") || login.contains("\"") ||  password.contains("'") || password.contains("\"")){
+           return 4;                                                //Funkcja zwraca 4 gdy dane zawierają niedozwolone znaki
+       }
         if(login.length()>=4){
             if(password.length()>=6){
                 return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
