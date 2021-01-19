@@ -62,6 +62,9 @@ public class Auction {
         if(price<=0){
             return 6;                                                                                                               //Zwracane jest 6 gdy cena jest mniejsza od 0
         }
+        if(title.contains("'") || title.contains("\"") || description.contains("'") || description.contains("\"") ||  category.contains("'") || category.contains("\"")){
+            return 7;                                                                                                               //Jeśli któraś zmienna zawiera niepoprawny znak to zwracane jest 7
+        }
         return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
     }
 
