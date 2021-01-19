@@ -43,29 +43,39 @@ public class Auction {
         this.price = price;
         this.category = category;
     }
-    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price){    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
-        if(title.length()<3 || title.length()>40){
+
+    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
+        if (title.length() < 3 || title.length() > 40) {
             return 1;                                                                                                               //Zwracane jest 1, gdy tytuł jest za krótki lub za długi
         }
-        if(description.length()<3 || description.length()>140){
+        if (description.length() < 3 || description.length() > 140) {
             return 2;                                                                                                               //Zwracane jest 2, gdy opis jest za krótki lub za długi
         }
-        if(pictureCount<1){
+        if (pictureCount < 1) {
             return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć
         }
-        if(!categoryList.contains(category)){
+        if (!categoryList.contains(category)) {
             return 4;                                                                                                               //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
         }
-        if(endDate.before(new Date(System.currentTimeMillis()))){
+        if (endDate.before(new Date(System.currentTimeMillis()))) {
             return 5;                                                                                                               //Zwracane jest 5 gdy data zakończenia jest mniejsza od obecnej daty
         }
-        if(price<=0){
+        if (price <= 0) {
             return 6;                                                                                                               //Zwracane jest 6 gdy cena jest mniejsza od 0
         }
-        if(title.contains("'") || title.contains("\"") || description.contains("'") || description.contains("\"") ||  category.contains("'") || category.contains("\"")){
+        if (title.contains("'") || title.contains("\"") || description.contains("'") || description.contains("\"") || category.contains("'") || category.contains("\"")) {
             return 7;                                                                                                               //Jeśli któraś zmienna zawiera niepoprawny znak to zwracane jest 7
         }
         return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
+    }
+
+    public static String deleteIllegalCharacters(String phrase) {                                                   //Metoda zwracająca ciąg znaków po usunięciu znaków niedozwolonych czyli " oraz '
+        for (int i = 0; i < phrase.length(); i++) {
+            if (phrase.charAt(i) == 39 || phrase.charAt(i) == 34) {
+                phrase = phrase.substring(0, i) + phrase.substring(i + 1);
+            }
+        }
+        return phrase;
     }
 
     public void setUser(User user) {

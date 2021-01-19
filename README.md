@@ -1,3 +1,3 @@
-sklep_v1
+Litwekabuy
 
 JSP shop Computer Science studies project 

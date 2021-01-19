@@ -33,6 +33,14 @@ class AuctionTest {
     }
 
     @Test
+    void test_deleteIllegalCharacters(){
+        Assertions.assertAll(()->Assertions.assertEquals(Auction.deleteIllegalCharacters("string"),"string"),
+                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("\"string"),"string"),
+                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("stri\"ng"),"string"),
+                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("\"string'"),"string"));
+    }
+
+    @Test
     void getStart() {
     }
 
