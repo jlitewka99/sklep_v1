@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
 
         User user = null;
         try {
-            user = userDAO.login(login, password);
+            user = login(login, password);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,5 +61,9 @@ public class Login extends HttpServlet {
         } else {
             response.sendRedirect(request.getContextPath() + "/index?status=login_error" + status);
         }
+    }
+
+    private User login(String login, String password) throws Exception{
+        return userDAO.login(login, password);
     }
 }
