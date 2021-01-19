@@ -48,11 +48,24 @@ public class Register extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode);
+        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode, street);
+
+        boolean doesLoginExist = true;
+
+        try { // check if login exist in database
+            doesLoginExist = userDAO.doesLoginExist(login);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         if (statusCode == 0) {
-            response.sendRedirect(request.getContextPath() + "/index?status=register_success");
-        } else {
+            if (doesLoginExist) { // return error if login exist in database
+                response.sendRedirect(request.getContextPath() + "/index?status=register_error8");
+            }else{ // if validation do not returns error, and if login do not exist in database
+                response.sendRedirect(request.getContextPath() + "/index?status=register_success");
+            }
+        } else { // if validation returns error
             response.sendRedirect(request.getContextPath() + "/index?status=register_error" + statusCode);
         }
     }
