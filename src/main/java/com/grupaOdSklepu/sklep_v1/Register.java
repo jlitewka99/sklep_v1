@@ -1,13 +1,11 @@
 package com.grupaOdSklepu.sklep_v1;
 
-import com.Sklep.jsp.Status;
 import com.Sklep.jsp.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "register", value = "/register")
 public class Register extends HttpServlet {
@@ -37,13 +35,7 @@ public class Register extends HttpServlet {
         street = request.getParameter("streetRegister");
         postCode = request.getParameter("postCodeRegister");
 
-        PrintWriter out = response.getWriter();
-
-        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode);
-        if (statusCode == 0) {
-
-        } else {
-            response.sendRedirect(request.getContextPath() + "/index?status=register_error" + statusCode);
-        }
+//(String email, String login, String password, String repeatPassword, String city, String postCode)
+        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode, street);
     }
 }
