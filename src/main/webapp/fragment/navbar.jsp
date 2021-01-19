@@ -1,6 +1,7 @@
-<%@ page import="com.Sklep.jsp.Cookies" %>
+<%@ page import="com.AdditionalComponents.Cookies" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
     request.setAttribute("request", request);
     request.setAttribute("response", response);

@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label for="streetRegister">Ulica i numer domu</label>
-                    <input type="text" class="form-control" id="streetRegister" name="streetRegister" placeholder="Miejscowość 13b/3" required>
+                    <input type="text" class="form-control" id="streetRegister" name="streetRegister" placeholder="Ulica 13b/3" required>
                 </div>
                 <div class="form-group">
                     <label for="postCodeRegister">Kod pocztowy</label>

@@ -11,6 +11,10 @@ public class User {
     private Double avgRating;
     private int numberOfRatings;
 
+    public User(String userID) {
+        this.userID = userID;
+    }
+
     public User(String userID, String login) {
         this.userID = userID;
         this.login = login;

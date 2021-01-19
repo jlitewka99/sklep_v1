@@ -71,7 +71,7 @@ public class Register extends HttpServlet {
 
         if (statusCode == 0) {
             if (doesLoginExist) { // return error if login exist in database
-                response.sendRedirect(request.getContextPath() + "/index?status=register_error8");
+                response.sendRedirect(request.getContextPath() + "/index?status=register_error0");
             }else{ // if validation do not returns error, and if login do not exist in database
                 response.sendRedirect(request.getContextPath() + "/index?status=register_success");
             }

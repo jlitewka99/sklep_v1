@@ -15,6 +15,32 @@ public class UserDAO {
         this.dataSource = dataSource;
     }
 
+
+    public User login(String login, String password) throws Exception{
+
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT id FROM user WHERE login='" + login + "' AND password='" + password + "'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            if (myRs.next()) {
+                String id = myRs.getString("id");
+                return new User(id);
+            }
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+        return null;
+    }
+
     public boolean doesLoginExist(String login) throws Exception{
 
         Connection myConn = null;
