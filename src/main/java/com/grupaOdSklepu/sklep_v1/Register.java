@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "register", value = "/register")
 public class Register extends HttpServlet {
@@ -35,6 +36,9 @@ public class Register extends HttpServlet {
         city = request.getParameter("cityRegister");
         street = request.getParameter("streetRegister");
         postCode = request.getParameter("postCodeRegister");
+
+        PrintWriter out = response.getWriter();
+        out.print("Hello World");
 
 //(String email, String login, String password, String repeatPassword, String city, String postCode)
         int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode);
