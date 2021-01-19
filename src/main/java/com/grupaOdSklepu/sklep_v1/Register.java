@@ -38,9 +38,12 @@ public class Register extends HttpServlet {
         postCode = request.getParameter("postCodeRegister");
 
         PrintWriter out = response.getWriter();
-        out.print("Hello World");
 
-//(String email, String login, String password, String repeatPassword, String city, String postCode)
         int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode);
+        if (statusCode == 0) {
+
+        } else {
+            response.sendRedirect(request.getContextPath() + "/index?status=register_error" + statusCode);
+        }
     }
 }
