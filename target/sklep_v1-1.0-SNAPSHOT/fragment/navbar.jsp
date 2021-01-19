@@ -32,7 +32,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Ustawienia</a></li>
-                                <li><a class="dropdown-item" href="#">Nowa aukcja</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addAuctionModal"
+                                       role="button" aria-expanded="false">Nowa aukcja</a></li>
                                 <li><a class="dropdown-item" href="#">Sprzedane</a></li>
                                 <li><a class="dropdown-item" href="#">Kupione</a></li>
                                 <li>
@@ -56,4 +57,5 @@
     </div>
 </nav>
 <jsp:include page="modallogin.jsp" />
+<jsp:include page="modalnewauction.jsp" />
 <jsp:include page="modalregister.jsp" />

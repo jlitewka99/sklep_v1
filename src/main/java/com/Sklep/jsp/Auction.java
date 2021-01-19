@@ -10,7 +10,7 @@ public class Auction {
     private String title;
     private String description;
     private double price;
-    public static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "dziecko", "zdrowie", "sport", "motoryzacja"));
+    private static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "dziecko", "zdrowie", "sport", "motoryzacja"));
     private String category;
     private Date startDate;
     private Date endDate;
@@ -42,6 +42,10 @@ public class Auction {
         this.description = description;
         this.price = price;
         this.category = category;
+    }
+
+    public static List<String> getCategoryList() {
+        return categoryList;
     }
 
     public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
