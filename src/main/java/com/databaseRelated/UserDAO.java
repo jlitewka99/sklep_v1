@@ -3,10 +3,7 @@ package com.databaseRelated;
 import com.Sklep.jsp.User;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserDAO {
     private DataSource dataSource;
@@ -16,7 +13,38 @@ public class UserDAO {
     }
 
 
-    public User login(String login, String password) throws Exception{
+    public void addUser(User user) throws Exception {
+
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "INSERT INTO user "
+                    + "(login, password, email, city, street, postcode, avgrating, numberofratings) "
+                    + "values (?, ?, ?, ?, ?, ?, ?, ?)";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setString(1, user.getLogin());
+            myStmt.setString(2, user.getPassword());
+            myStmt.setString(3, user.getEmail());
+            myStmt.setString(4, user.getCity());
+            myStmt.setString(5, user.getStreet());
+            myStmt.setString(6, user.getPostCode());
+            myStmt.setDouble(7, 0.0);
+            myStmt.setInt(8, 0);
+
+            myStmt.execute();
+
+        } finally {
+            close(myConn, myStmt, null);
+        }
+
+    }
+
+    public User login(String login, String password) throws Exception {
 
         Connection myConn = null;
         Statement myStmt = null;
@@ -41,7 +69,7 @@ public class UserDAO {
         return null;
     }
 
-    public boolean doesLoginExist(String login) throws Exception{
+    public boolean doesLoginExist(String login) throws Exception {
 
         Connection myConn = null;
         Statement myStmt = null;

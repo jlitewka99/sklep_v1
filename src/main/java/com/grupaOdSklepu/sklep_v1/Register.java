@@ -19,6 +19,7 @@ public class Register extends HttpServlet {
     private DataSource dataSource;
 
     private UserDAO userDAO;
+    private boolean doesLoginExist = true;
 
     private String userID;
     private String login;
@@ -60,10 +61,9 @@ public class Register extends HttpServlet {
 
         int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode, street);
 
-        boolean doesLoginExist = true;
 
         try { // check if login exist in database
-            doesLoginExist = userDAO.doesLoginExist(login);
+            doesLoginExist = doesLoginExist(login);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,10 +73,24 @@ public class Register extends HttpServlet {
             if (doesLoginExist) { // return error if login exist in database
                 response.sendRedirect(request.getContextPath() + "/index?status=register_error0");
             }else{ // if validation do not returns error, and if login do not exist in database
+                User user = new User(login, password, email, city, street, postCode);
+                try {
+                    addUser(user);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 response.sendRedirect(request.getContextPath() + "/index?status=register_success");
             }
         } else { // if validation returns error
             response.sendRedirect(request.getContextPath() + "/index?status=register_error" + statusCode);
         }
+    }
+
+    private boolean doesLoginExist(String login) throws Exception{
+        return userDAO.doesLoginExist(login);
+    }
+
+    private void addUser(User user) throws Exception{
+        userDAO.addUser(user);
     }
 }

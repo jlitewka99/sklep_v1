@@ -20,6 +20,15 @@ public class User {
         this.login = login;
     }
 
+    public User(String login, String password, String email, String city, String street, String postCode) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.city = city;
+        this.street = street;
+        this.postCode = postCode;
+    }
+
     public String getStreet() {
         return street;
     }
