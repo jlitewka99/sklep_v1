@@ -9,9 +9,10 @@ import java.io.IOException;
 public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        Cookie sessionCookie = new Cookie("sessionCookie", "0");
 
+        Cookie sessionCookie = new Cookie("sessionCookie", "0");
         sessionCookie.setMaxAge(60 * 60 * 24 * 365);
+
         response.addCookie(sessionCookie);
         response.sendRedirect(request.getContextPath()+"/index?status=loggedout");
 
