@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         login = request.getParameter("loginLogin");
-        password = request.getParameter("passwordRegister");
+        password = request.getParameter("passwordLogin");
 
         int status = User.userLoginValidate(login, password);
 
