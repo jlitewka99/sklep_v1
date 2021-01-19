@@ -16,7 +16,7 @@
         alert('Zalogowano!', 'Możesz korzystać z pełnej funkcjonalności serwisu.', 'alert-success');
     } else if (status == "loggedout") {
         alert('Wylogowano!', 'Możesz się zalogować ponownie.', 'alert-success');
-    } else if (status == "error1") {
-        alert('Nie udało się zalogować', 'Sprawdź poprawność emaila i hasła.', 'alert-warning');
+    } else if (status == "register_error1") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się zarejestrować', 'Sprawdź poprawność emaila i hasła.', 'alert-warning');
     }
 </script>

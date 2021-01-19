@@ -15,6 +15,10 @@ public class UserDAO {
         this.dataSource = dataSource;
     }
 
+    public boolean doesLoginExist(String login) throws Exception{
+
+    }
+
     public User getUserById(String id) throws Exception {
         Connection myConn = null;
         Statement myStmt = null;

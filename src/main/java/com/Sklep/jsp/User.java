@@ -8,7 +8,6 @@ public class User {
     private String city;
     private String street;
     private String postCode;
-    private Status status;
     private Double avgRating;
     private int numberOfRatings;
 
@@ -47,9 +46,6 @@ public class User {
         return postCode;
     }
 
-    public Status getStatus() {
-        return status;
-    }
 
     public Double getAvgRating() {
         return avgRating;
