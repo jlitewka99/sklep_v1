@@ -55,11 +55,11 @@ public class Auction {
         if (title.length() < 3 || title.length() > 40) {
             return 1;                                                                                                               //Zwracane jest 1, gdy tytuł jest za krótki lub za długi
         }
-        if (description.length() < 3 || description.length() > 500) {
+        if (description.length() < 3 || description.length() > 400) {
             return 2;                                                                                                               //Zwracane jest 2, gdy opis jest za krótki lub za długi
         }
-        if (pictureCount < 1) {
-            return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć
+        if (pictureCount < 1 ||pictureCount > 3) {
+            return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć lub wysłano za dużo
         }
         if (!categoryList.contains(category)) {
             return 4;                                                                                                               //Zwracane jest 4 gdy podano kategorię nie znajdującą się na liście kategorii
