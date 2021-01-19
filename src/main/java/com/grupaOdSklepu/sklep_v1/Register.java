@@ -32,6 +32,16 @@ public class Register extends HttpServlet {
     private int numberOfRatings;
 
     @Override
+    public void init() throws ServletException {
+        super.init();
+        try {
+            userDAO = new UserDAO(dataSource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

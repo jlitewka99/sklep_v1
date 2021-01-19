@@ -30,7 +30,7 @@
         alert('Nie udało się zarejestrować', 'niepoprawny kod pocztowy', 'alert-warning');
     } else if (status == "register_error7") { // register returns error code depending on error in registerValidator
         alert('Nie udało się zarejestrować', 'nie wpisano prawidłowego addresu', 'alert-warning');
-    else if (status == "register_error8") { // register returns error code depending on error in registerValidator
+    }else if (status == "register_error8") { // register returns error code depending on error in registerValidator
             alert('Nie udało się zarejestrować', 'zajęty login', 'alert-warning');
     }
 </script>
