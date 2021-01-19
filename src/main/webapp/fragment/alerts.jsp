@@ -39,7 +39,11 @@
     }else if (status == "auction_error3") { // register returns error code depending on error in registerValidator
         alert('Nie udało się wystawić produktu', 'Nie odnaleziono zdjęcia produktu.', 'alert-warning');
     }else if (status == "auction_error4") { // register returns error code depending on error in registerValidator
-        alert('Nie udało się wystawić produktu', 'Nie poprawna data zakończenia aukcji.', 'alert-warning');
+        alert('Nie udało się wystawić produktu', 'Nie ma takiej kategori', 'alert-warning');}
     }else if (status == "auction_error5") { // register returns error code depending on error in registerValidator
-        alert('Nie udało się wystawić produktu', 'Niepoprawna cena produktu.', 'alert-warning');
+        alert('Nie udało się wystawić produktu', 'Nie poprawna data zakończenia aukcji.', 'alert-warning');
+    }else if (status == "auction_error6") { // register returns error code depending on error in registerValidator
+        alert('Nie udało się wystawić produktu', 'Niepoprawna cena produktu.', 'alert-warning');}
+    else if (status == "auction_error0") { // register returns error code depending on error in registerValidator
+        alert('udało się wystawić produktu', 'Pomyślnie dodano produkt', 'alert-warning');}
 </script>
