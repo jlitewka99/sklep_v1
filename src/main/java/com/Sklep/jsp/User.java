@@ -77,7 +77,7 @@ public class User {
             }
         }
     }
-    public static int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode) {         //Metoda sprawdza wstępnie dane podane przez użytkownika i zwraca odpowiednie kody błędów jeśli któraś jest niepoprawna.
+    public static int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode, String street) {         //Metoda sprawdza wstępnie dane podane przez użytkownika i zwraca odpowiednie kody błędów jeśli któraś jest niepoprawna.
         if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
             return 1;                                                       //Zwraca 1 kiedy podano niepoprawny email.
         }
@@ -110,7 +110,20 @@ public class User {
             return 5;                                                        //Jeżeli hasło nie posiada wielkiej litery lub nie posiada liczby.
         }
         if (postCode.length() < 6 || !postCode.contains("-")) {
-            return 6;                                                        //Jeżeli kod pocztowy jest mniejszy niż 6 lub kod pocztowy nie zawiera znaku - to zwracany jest znak
+            return 6;                                                        //Jeżeli kod pocztowy jest mniejszy niż 6 lub kod pocztowy nie zawiera znaku - to zwracany jest błąd
+        }
+        if(street.length()<1){
+            return 7;                                                          //Jeżeli w miejsce ulicy nie wpisano żadnego znaku to zwracane jest błąd 7
+        }
+        boolean containsNumber = false;
+        for(int i=0; i<street.length(); i++){
+            if(street.charAt(i)>='0' && street.charAt(i)<='9'){
+                containsNumber=true;
+                break;
+            }
+        }
+        if(!containsNumber){
+            return 7;                                                           //Jeżeli w miejscu ulicy nie wpisano żadnej liczby to zwracany jest błąd 7
         }
         return 0;
     }

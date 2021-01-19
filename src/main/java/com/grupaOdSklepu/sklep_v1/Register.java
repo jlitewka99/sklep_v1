@@ -1,6 +1,5 @@
 package com.grupaOdSklepu.sklep_v1;
 
-import com.Sklep.jsp.Status;
 import com.Sklep.jsp.User;
 
 import javax.servlet.*;
@@ -37,6 +36,6 @@ public class Register extends HttpServlet {
         postCode = request.getParameter("postCodeRegister");
 
 //(String email, String login, String password, String repeatPassword, String city, String postCode)
-        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode);
+        int statusCode = User.userRegisterValidate(email, login, password, password2, city, postCode, street);
     }
 }
