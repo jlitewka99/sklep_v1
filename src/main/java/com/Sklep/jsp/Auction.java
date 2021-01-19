@@ -105,32 +105,4 @@ public class Auction {
         return userId;
     }
 
-    /*
-    public Auction(UserData start, UserData end, String description, String auctionID, String name, double price, User seller) {
-        this.start = start;
-        this.end = end;
-        this.description = description;
-        this.auctionID = auctionID;
-        this.name = name;
-        this.price = price;
-        this.seller = seller;
-    }
-
-    public UserData getStart() {
-        return start;
-    }
-
-    public void setStart(UserData start) {
-        this.start = start;
-    }
-
-    public UserData getEnd() {
-        return end;
-    }
-
-    public void setEnd(UserData end) {
-        this.end = end;
-    }
-    */
-
 }
