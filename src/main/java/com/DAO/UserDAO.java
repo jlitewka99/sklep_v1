@@ -1,6 +1,6 @@
-package com.databaseRelated;
+package com.DAO;
 
-import com.Sklep.jsp.User;
+import com.model.User;
 
 import javax.sql.DataSource;
 import java.sql.*;

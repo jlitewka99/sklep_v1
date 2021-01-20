@@ -1,8 +1,7 @@
-package com.grupaOdSklepu.sklep_v1;
+package com.controller;
 
-import com.Sklep.jsp.Status;
-import com.Sklep.jsp.User;
-import com.databaseRelated.UserDAO;
+import com.model.User;
+import com.DAO.UserDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

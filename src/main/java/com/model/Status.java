@@ -1,4 +1,4 @@
-package com.Sklep.jsp;
+package com.model;
 
 public enum Status {
     New,

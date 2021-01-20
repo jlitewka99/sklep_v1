@@ -1,4 +1,4 @@
-package com.databaseRelated;
+package com.DAO;
 
 import com.AdditionalComponents.Category;
 

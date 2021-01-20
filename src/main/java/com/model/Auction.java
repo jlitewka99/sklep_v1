@@ -1,4 +1,4 @@
-package com.Sklep.jsp;
+package com.model;
 
 import java.sql.Date;
 import java.util.ArrayList;

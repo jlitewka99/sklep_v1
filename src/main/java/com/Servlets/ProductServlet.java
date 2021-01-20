@@ -1,8 +1,8 @@
 package com.Servlets;
 
-import com.Sklep.jsp.Auction;
-import com.databaseRelated.AuctionDAO;
-import com.databaseRelated.UserDAO;
+import com.model.Auction;
+import com.DAO.AuctionDAO;
+import com.DAO.UserDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

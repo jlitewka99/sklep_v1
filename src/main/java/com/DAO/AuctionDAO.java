@@ -1,6 +1,6 @@
-package com.databaseRelated;
+package com.DAO;
 
-import com.Sklep.jsp.Auction;
+import com.model.Auction;
 
 import javax.sql.DataSource;
 import java.sql.*;

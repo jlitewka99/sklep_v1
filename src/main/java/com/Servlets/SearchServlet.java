@@ -1,9 +1,9 @@
 package com.Servlets;
 
 import com.AdditionalComponents.Category;
-import com.Sklep.jsp.Auction;
-import com.databaseRelated.AuctionDAO;
-import com.databaseRelated.CategoryDAO;
+import com.model.Auction;
+import com.DAO.AuctionDAO;
+import com.DAO.CategoryDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

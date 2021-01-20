@@ -1,7 +1,7 @@
 package com.Servlets;
 
 import com.AdditionalComponents.Category;
-import com.databaseRelated.CategoryDAO;
+import com.DAO.CategoryDAO;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

@@ -1,4 +1,4 @@
-package com.grupaOdSklepu.sklep_v1;
+package com.controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

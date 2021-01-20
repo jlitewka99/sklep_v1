@@ -1,4 +1,4 @@
-<%@ page import="com.Sklep.jsp.Auction" %>
+<%@ page import="com.model.Auction" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
@@ -14,17 +14,19 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="auctionTitle">Nazwa przedmiotu</label>
-                    <input type="text" class="form-control" id="auctionTitle" name="auctionTitle" placeholder="Na przykład chleb" required>
+                    <input type="text" class="form-control" id="auctionTitle" name="auctionTitle"
+                           placeholder="Na przykład chleb" required>
                 </div>
                 <div class="form-group">
                     <label for="auctionDescription">Opis przedmiotu</label>
-                    <textarea class="form-control rounded-0" id="auctionDescription" name="auctionDescription" rows="7" placeholder="Na przykład smaczny" required></textarea>
+                    <textarea class="form-control rounded-0" id="auctionDescription" name="auctionDescription" rows="7"
+                              placeholder="Na przykład smaczny" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="auctionCategory" class="form-label">Kategoria</label>
                     <select class="form-select" id="auctionCategory" name="auctionCategory" required>
                         <c:forEach var="tempCategory" items="${categoryList}">
-                        <option value="${tempCategory}">${tempCategory}</option>
+                            <option value="${tempCategory}">${tempCategory}</option>
                         </c:forEach>
                     </select>
                     <div class="invalid-feedback">
@@ -33,24 +35,35 @@
                 </div>
                 <div class="form-group">
                     <label for="auctionPrice">Cena</label>
-                    <input type="number" step="0.01" class="form-control" id="auctionPrice" name="auctionPrice" placeholder="Cena" required>
+                    <input type="number" step="0.01" class="form-control" id="auctionPrice" name="auctionPrice"
+                           placeholder="Cena" required>
                 </div>
                 <div class="form-group">
                     <label for="auctionStartDate">Data zakończenia</label>
-                    <input class="form-control" type="date" value="2011-08-19T13:45:00" id="auctionStartDate" name="auctionStartDate" required>
+                    <input class="form-control" type="date" value="2011-08-19T13:45:00" id="auctionStartDate"
+                           name="auctionStartDate" required>
                 </div>
                 <div class="form-group">
-                    <label for="streetRegister">Ulica i numer domu</label>
-                    <input type="text" class="form-control" id="streetRegister" name="streetRegister" placeholder="Ulica 13b/3" required>
+                    <label for="auctionNumberOfPhotos" class="form-label">Wybierz ilość zdjęć które chcesz dodać</label>
+                    <select class="form-select" id="auctionNumberOfPhotos" name="auctionNumberOfPhotos" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Wybierz odpowiednią liczbę zdjęć
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="postCodeRegister">Kod pocztowy</label>
-                    <input type="text" class="form-control" id="postCodeRegister" name="postCodeRegister" placeholder="00-000" required>
+                    <label class="custom-file">
+                        <label for="auctionPicture1">Wstaw zdjęcie</label>
+                        <input type="file" class="form-control-file" id="auctionPicture1" required>
+                    </label>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
-                <button type="submit" class="btn btn-primary">Zarejestruj</button>
+                <button type="submit" class="btn btn-primary">Dodaj aukcję</button>
             </div>
         </form>
     </div>

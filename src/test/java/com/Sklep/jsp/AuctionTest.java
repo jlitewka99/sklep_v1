@@ -1,5 +1,6 @@
 package com.Sklep.jsp;
 
+import com.model.Auction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

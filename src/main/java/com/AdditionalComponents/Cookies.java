@@ -1,7 +1,7 @@
 package com.AdditionalComponents;
 
 
-import com.Sklep.jsp.User;
+import com.model.User;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
