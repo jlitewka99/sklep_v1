@@ -140,7 +140,7 @@ public class AuctionDAO {
             myConn = dataSource.getConnection();
 
             String sql = "INSERT INTO auction "
-                    + "(title, description, numberofphotos, startdate, enddate, sellerid, price, category) "
+                    + "(title, description, numberofphotos, startdate, enddate, userid, price, category) "
                     + "values (?, ?, ?, ?, ?, ?, ?, ?)";
 
             myStmt = myConn.prepareStatement(sql);
