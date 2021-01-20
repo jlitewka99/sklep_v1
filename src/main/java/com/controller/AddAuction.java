@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.DAO.AuctionDAO;
-import com.DAO.UserDAO;
 import com.model.Auction;
 import com.model.Cookies;
 import com.model.User;
@@ -20,13 +19,7 @@ import java.text.SimpleDateFormat;
 @WebServlet(name = "AddAuction", value = "/addauction")
 public class AddAuction extends HttpServlet {
 
-    private String title;
-    private String description;
-    private double price;
-    private String category;
     private Date endDate;
-    private int numberOfPhotos;
-    private User user;
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
@@ -57,10 +50,10 @@ public class AddAuction extends HttpServlet {
         if(userId > 0) { // check if logged in
 
             // get POST parameters
-            title = request.getParameter("auctionTitle");
-            description = request.getParameter("auctionDescription");
-            price = Double.parseDouble(request.getParameter("auctionPrice"));
-            category = request.getParameter("auctionCategory");
+            String title = request.getParameter("auctionTitle");
+            String description = request.getParameter("auctionDescription");
+            double price = Double.parseDouble(request.getParameter("auctionPrice"));
+            String category = request.getParameter("auctionCategory");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
             // conversion HTML date to sql date format
@@ -69,7 +62,7 @@ public class AddAuction extends HttpServlet {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            numberOfPhotos = Integer.parseInt(request.getParameter("auctionNumberOfPhotos"));
+            int numberOfPhotos = Integer.parseInt(request.getParameter("auctionNumberOfPhotos"));
 
 
             // validation of auction data

@@ -3,6 +3,7 @@ package com.Servlets;
 import com.model.Auction;
 import com.DAO.AuctionDAO;
 import com.DAO.UserDAO;
+import com.model.User;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -40,34 +41,45 @@ public class AuctionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Auction auction = null;
+
+        // get GET parameter
         auctionId = request.getParameter("id");
 
+        // get auction from database
         try {
-            getAuctionClass(request, response);
+            auction = getAuctionClass(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
+        // if auction with that id exist
+        if(auction != null) {
+
+            // add Auction to the request
+            request.setAttribute("AUCTION", auction);
+
+            // send to JSP page
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/item.jsp");
+            dispatcher.forward(request, response);
+        }else{
+            response.sendRedirect(request.getContextPath() + "/index?status=auction_notexist");
+        }
+
     }
 
-    private void getAuctionClass(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Auction auction = auctionDAO.getAuctionById(auctionId);
+    private Auction getAuctionClass(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
         // get Auction class from database by ID
+        return auctionDAO.getAuctionById(auctionId);
 
-        auction.setUser(userDAO.getUserById(auction.getUserId()));
-        // create class of seller of that item
-
-
-        request.setAttribute("AUCTION", auction);
-        // add Auction to the request
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/item.jsp");
-        dispatcher.forward(request, response);
-        // send to JSP page
     }
 
-
+    private User getUserById(Auction auction) throws Exception {
+        return userDAO.getUserById(auction.getUser().getUserID());
+    }
 
 
     @Override

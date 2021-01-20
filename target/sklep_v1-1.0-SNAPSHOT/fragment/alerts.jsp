@@ -26,11 +26,11 @@
     } else if (status == "register_error4") {
         alert('Nie udało się zarejestrować', 'Za krótkie hasło', 'alert-warning');
     } else if (status == "register_error5") {
-        alert('Nie udało się zarejestrować', 'za słabe hasło', 'alert-warning');
+        alert('Nie udało się zarejestrować', 'Za słabe hasło', 'alert-warning');
     } else if (status == "register_error6") {
-        alert('Nie udało się zarejestrować', 'niepoprawny kod pocztowy', 'alert-warning');
+        alert('Nie udało się zarejestrować', 'Niepoprawny kod pocztowy', 'alert-warning');
     } else if (status == "register_error7") {
-        alert('Nie udało się zarejestrować', 'nie wpisano prawidłowego addresu', 'alert-warning');
+        alert('Nie udało się zarejestrować', 'Nie wpisano prawidłowego addresu', 'alert-warning');
     } else if (status == "register_error8") {
         alert('Nie udało się zarejestrować', 'Źle podana Miejscowość', 'alert-warning');
     } else if (status == "register_error9") {
@@ -64,7 +64,11 @@
     } else if (status == "login_error3") {
         alert('Nie udało się zalogować', 'Coś podałeś nieprawidłowo.', 'alert-warning');
     } else if (status == "login_error100") {
-        alert('Nie udało się zalogować', 'nie ładnie tak kombinować cwaniaczku.', 'alert-warning');
+        alert('Nie udało się zalogować', 'Nie ładnie tak kombinować cwaniaczku.', 'alert-warning');
+    }else if (status == "not_leggedin") {
+        alert('Nie jesteś zalogowany', 'Zaloguj się abwy wykonać tą czynność', 'alert-warning');
+    }else if (status == "auction_notexist") {
+        alert('Aukcja nie istnieje', 'Wystąpił błąd', 'alert-warning');
     }
     // register returns error code depending on error in registerValidator
 </script>

@@ -1,6 +1,7 @@
 package com.DAO;
 
 import com.model.Auction;
+import com.model.User;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -145,7 +146,13 @@ public class AuctionDAO {
         try {
             myConn = dataSource.getConnection();
 
-            String sql = "SELECT * FROM auction WHERE id='" + id + "'";
+            String sql = "SELECT auction.id, auction.title, auction.description, " +
+                    "auction.price, auction.startdate, auction.enddate, " +
+                    "auction.numberofphotos, user.id AS uid, " +
+                    "user.login AS ulogin, user.avgrating AS uavgrating, " +
+                    "user.numberofratings AS unumberofratings " +
+                    "FROM auction INNER JOIN user ON auction.userid=user.id " +
+                    "WHERE auction.id='" + id + "'";
 
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
@@ -157,10 +164,18 @@ public class AuctionDAO {
                 Double price = myRs.getDouble("price");
                 Date startDate = myRs.getDate("startdate");
                 Date endDate = myRs.getDate("enddate");
-                int userId = myRs.getInt("userid");
                 int numberOfPhotos = myRs.getInt("numberofphotos");
 
-                return new Auction(auctionID, title, description, price, startDate, endDate, numberOfPhotos, userId);
+                int userId = myRs.getInt("uid");
+                String login = myRs.getString("ulogin");
+                Double avgRating = myRs.getDouble("uavgrating");
+                int numberOfRatings = myRs.getInt("unumberofratings");
+
+
+
+
+
+                return new Auction(auctionID, title, description, price, startDate, endDate, numberOfPhotos, new User(userId, login, avgRating, numberOfRatings));
             }
 
         } finally {

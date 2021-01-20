@@ -1,3 +1,5 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.DAO.*" %>
@@ -24,47 +26,34 @@
     <div class="col-md-5">
         <!-- Top slideshow -->
         <div class="slider-for">
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=1">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=2">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=3">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=4">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=5">
-            </div>
+            <c:forEach var="i" begin="1" end="${AUCTION.numberOfPhotos}">
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=${i}">
+                </div>
+            </c:forEach>
         </div>
         <!-- /Top slideshow -->
         <!-- Bottom slideshow -->
         <div class="slider-nav-item">
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=1">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=2">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=3">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=4">
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/1500x700?text=5">
-            </div>
+            <c:forEach var="i" begin="1" end="${AUCTION.numberOfPhotos}">
+                <div>
+                    <img src="https://via.placeholder.com/1500x700?text=${i}">
+                </div>
+            </c:forEach>
         </div>
         <!-- /Bottom slideshow-->
     </div>
     <!-- /Pictures -->
     <div class="col-md-5">
+        <p>Sprzedawca: ${AUCTION.user.login} ⭐: ${AUCTION.user.avgRating}/5 (ilość opinii ${AUCTION.user.numberOfRatings})</p>
+        <hr>
+        <p>od ${AUCTION.startDate} do ${AUCTION.endDate}</p>
         <h1>${AUCTION.title}</h1>
-        <p>${AUCTION.description} ${AUCTION.user.login}</p>
+        <p>Cena: ${AUCTION.price}zł</p>
+        <a href="buy?id=${AUCTION.auctionID}">
+            <button type="button" class="btn btn-success">Kup produkt</button>
+        </a>
+        <p>${AUCTION.description}</p>
     </div>
 </div>
 

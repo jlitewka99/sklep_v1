@@ -15,8 +15,9 @@ public class Auction {
     private Date startDate;
     private Date endDate;
     private int numberOfPhotos;
-    private int userId;
     private User user;
+
+
 
     public Auction(String title, String description, double price, String category, Date endDate, int numberOfPhotos, User user) {
         this.title = title;
@@ -36,7 +37,7 @@ public class Auction {
         this.price = price;
     }
 
-    public Auction(int auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, int userId) {
+    public Auction(int auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, User user) {
         this.auctionID = auctionID;
         this.title = title;
         this.description = description;
@@ -44,7 +45,7 @@ public class Auction {
         this.startDate = startDate;
         this.endDate = endDate;
         this.numberOfPhotos = numberOfPhotos;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Auction(int auctionID, String title, String description, double price, String category) {
@@ -139,10 +140,6 @@ public class Auction {
 
     public int getNumberOfPhotos() {
         return numberOfPhotos;
-    }
-
-    public int getUserId() {
-        return userId;
     }
 
     public String getCategory() {
