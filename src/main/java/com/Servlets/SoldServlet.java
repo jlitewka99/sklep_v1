@@ -2,8 +2,10 @@ package com.Servlets;
 
 import com.DAO.AuctionDAO;
 import com.DAO.CategoryDAO;
+import com.DAO.UserDAO;
 import com.model.Auction;
 import com.model.Cookies;
+import com.model.User;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -22,6 +24,8 @@ public class SoldServlet extends HttpServlet {
 
     private AuctionDAO auctionDAO;
 
+    private UserDAO userDAO;
+
     private CategoryDAO categoryDAO;
 
     @Override
@@ -29,6 +33,10 @@ public class SoldServlet extends HttpServlet {
         super.init();
         try {
             auctionDAO = new AuctionDAO(dataSource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }try {
+            userDAO = new UserDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,9 +59,23 @@ public class SoldServlet extends HttpServlet {
         }
         request.setAttribute("USER", sessionId);
 
+        try {
+            getUserById(request, response, sessionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/sold.jsp");
         dispatcher.forward(request, response);
 
+    }
+
+    private void getUserById(HttpServletRequest request, HttpServletResponse response, int sessionId) throws Exception{
+        User user = userDAO.getUserById(sessionId);
+
+        request.setAttribute("USER", user);
+        // add User to the request
     }
 
     private void getSoldList(HttpServletRequest request, HttpServletResponse response, int sessionId) throws Exception{

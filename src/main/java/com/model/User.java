@@ -11,9 +11,16 @@ public class User {
     private Double avgRating;
     private int numberOfRatings;
 
-    //User(userId, login, avgRating, numberOfRatings));
+
     public User(int userID) {
         this.userID = userID;
+    }
+
+    public User(String login, String email, String city, String street) {
+        this.login = login;
+        this.email = email;
+        this.city = city;
+        this.street = street;
     }
 
     public User(int userID, String login, Double avgRating, int numberOfRatings) {

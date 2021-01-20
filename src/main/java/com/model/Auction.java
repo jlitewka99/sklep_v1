@@ -16,8 +16,17 @@ public class Auction {
     private Date endDate;
     private int numberOfPhotos;
     private User user;
+    private int opinion;
+    private int status;
 
 
+    public Auction(int auctionID, String title, String description, double price, User user) {
+        this.auctionID = auctionID;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.user = user;
+    }
 
     public Auction(String title, String description, double price, String category, Date endDate, int numberOfPhotos, User user) {
         this.title = title;
@@ -67,7 +76,7 @@ public class Auction {
     }
 
     public static int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
-        if(title==null || description==null  || category==null || endDate==null){
+        if (title == null || description == null || category == null || endDate == null) {
             return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
         }
         if (title.length() < 3 || title.length() > 40) {
@@ -76,7 +85,7 @@ public class Auction {
         if (description.length() < 3 || description.length() > 400) {
             return 2;                                                                                                               //Zwracane jest 2, gdy opis jest za krótki lub za długi
         }
-        if (pictureCount < 1 ||pictureCount > 3) {
+        if (pictureCount < 1 || pictureCount > 3) {
             return 3;                                                                                                               //Zwracane jest 3, gdy nie wysłano zdjęć lub wysłano za dużo
         }
         if (!categoryList.contains(category)) {
@@ -96,7 +105,7 @@ public class Auction {
     }
 
     public static String filter(String phrase) {                                                   //Metoda zwracająca ciąg znaków po usunięciu znaków niedozwolonych czyli " oraz '
-        if(phrase==null){
+        if (phrase == null) {
             return "";
         }
         for (int i = 0; i < phrase.length(); i++) {
@@ -145,5 +154,13 @@ public class Auction {
 
     public String getCategory() {
         return category;
+    }
+
+    public int getOpinion() {
+        return opinion;
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

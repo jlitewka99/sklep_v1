@@ -29,7 +29,10 @@
                     <b>Sprzedane przedmioty</b>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Użytkownik ${Cookies.getSessionId(request, response)}
+                    Użytkownik ${USER.login}
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Użytkownik ${USER.avgRating}/5 (ilość ocen ${USER.numberOfRatings})
                 </li>
             </ul>
         </div>
@@ -47,6 +50,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
+                                    ${tempAuction.user.city} ${tempAuction.user.street}
+                                    <hr>
                                     <h5 class="card-title">${tempAuction.title}</h5>
                                     <p class="card-text">
                                             ${tempAuction.description}

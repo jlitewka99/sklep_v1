@@ -101,16 +101,17 @@ public class UserDAO {
         try {
             myConn = dataSource.getConnection();
 
-            String sql = "SELECT login FROM user WHERE id='" + id + "'";
+            String sql = "SELECT * FROM user WHERE id='" + id + "'";
 
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
 
             if (myRs.next()) {
                 String login = myRs.getString("login");
-                String status;
-                Double rating;
-                return new User(id, login);
+                Double rating = myRs.getDouble("avgrating");
+                int numberOfRatings = myRs.getInt("numberofratings");
+
+                return new User(id, login, rating, numberOfRatings);
             }
 
         } finally {
