@@ -38,29 +38,27 @@
         <div class="col-md-9">
             <!-- Products -->
             <c:forEach var="tempAuction" items="${AUCTIONS}">
-                <a href="auction?id=${tempAuction.auctionID}">
-                    <div class="row">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img src="https://via.placeholder.com/150x9000?text=1"
-                                         style="width: 100%; max-height: 200px; object-fit: cover;" alt="img">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${tempAuction.title}</h5>
-                                        <p class="card-text">
-                                                ${tempAuction.description}
-                                        </p>
-                                        <p class="card-text"><small
-                                                class="text-muted">Cena ${tempAuction.price}zł</small>
-                                        </p>
-                                    </div>
+                <div class="row">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-2">
+                                <img src="https://via.placeholder.com/150x9000?text=1"
+                                     style="width: 100%; max-height: 200px; object-fit: cover;" alt="img">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${tempAuction.title}</h5>
+                                    <p class="card-text">
+                                            ${tempAuction.description}
+                                    </p>
+                                    <p class="card-text"><small
+                                            class="text-muted">Cena ${tempAuction.price}zł</small>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </c:forEach>
             <!-- /Products -->
         </div>

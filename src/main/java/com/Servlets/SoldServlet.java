@@ -49,9 +49,9 @@ public class SoldServlet extends HttpServlet {
         }else{
             response.sendRedirect(request.getContextPath() + "/index?status=not_leggedin");
         }
-        request.setAttribute("COOK", sessionId);
+        request.setAttribute("USER", sessionId);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/bought.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/sold.jsp");
         dispatcher.forward(request, response);
 
     }

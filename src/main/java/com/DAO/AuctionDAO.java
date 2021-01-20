@@ -53,7 +53,7 @@ public class AuctionDAO {
         try {
             myConn = dataSource.getConnection();
 
-            String sql = "SELECT * FROM auction WHERE id='" + id + "'";
+            String sql = "SELECT * FROM sold WHERE sellerid='" + id + "'";
 
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
