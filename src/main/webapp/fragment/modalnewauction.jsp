@@ -6,7 +6,7 @@
 %>
 <div class="modal fade" id="addAuctionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content needs-validation" method="post" action="addAuction" novalidate>
+        <form class="modal-content needs-validation" id="newAuction" method="post" action="addauction" novalidate>
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Wystaw przedmiot</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -40,8 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="auctionStartDate">Data zakończenia</label>
-                    <input class="form-control" type="date" value="2011-08-19T13:45:00" id="auctionStartDate"
-                           name="auctionStartDate" required>
+                    <input class="form-control" type="date" id="auctionStartDate" name="auctionStartDate" required>
                 </div>
                 <div class="form-group">
                     <label for="auctionNumberOfPhotos" class="form-label">Wybierz ilość zdjęć które chcesz dodać</label>
@@ -51,15 +50,48 @@
                         <option value="3">3</option>
                     </select>
                     <div class="invalid-feedback">
-                        Wybierz odpowiednią liczbę zdjęć
+                        Wybierz odpowiednią liczbę zdjęć!
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="custom-file">
-                        <label for="auctionPicture1">Wstaw zdjęcie</label>
-                        <input type="file" class="form-control-file" id="auctionPicture1" required>
-                    </label>
+                <div class="form-group" id="photo1">
+                    <input type="file" class="form-control" id="auctionPhoto1" name="auctionPhoto1" aria-label="file example" required>
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
                 </div>
+                <div class="form-group" id="photo2">
+                    <input type="file" class="form-control" id="auctionPhoto2" name="auctionPhoto2" aria-label="file example" required>
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+                <div class="form-group" id="photo3">
+                    <input type="file" class="form-control" id="auctionPhoto3" name="auctionPhoto3" aria-label="file example" required>
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $("#photo2").css("display", "none");
+                        $('#auctionPhoto2').prop('required',false);
+                        $("#photo3").css("display", "none");
+                        $('#auctionPhoto3').prop('required',false);
+                        $('#auctionNumberOfPhotos').on('change', function () {
+                           //console.log(this.value);
+                            if(this.value == "1"){
+                                $("#photo2").css("display", "none");
+                                $('#auctionPhoto2').prop('required',false);
+                                $("#photo3").css("display", "none");
+                                $('#auctionPhoto3').prop('required',false);
+                            }else if(this.value == "2"){
+                                $("#photo2").css("display", "block");
+                                $('#auctionPhoto2').prop('required',true);
+                                $("#photo3").css("display", "none");
+                                $('#auctionPhoto3').prop('required',false);
+                            }else{
+                                $("#photo2").css("display", "block");
+                                $('#auctionPhoto2').prop('required',true);
+                                $("#photo3").css("display", "block");
+                                $('#auctionPhoto3').prop('required',true);
+                            }
+                        });
+                    });
+                </script>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>

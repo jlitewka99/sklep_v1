@@ -1,6 +1,6 @@
 package com.Servlets;
 
-import com.AdditionalComponents.Category;
+import com.model.Category;
 import com.DAO.CategoryDAO;
 
 import javax.annotation.Resource;

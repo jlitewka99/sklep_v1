@@ -1,6 +1,6 @@
 package com.DAO;
 
-import com.AdditionalComponents.Category;
+import com.model.Category;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.AdditionalComponents.Cookies;
+import com.model.Cookies;
 import com.model.User;
 import com.DAO.UserDAO;
 
@@ -13,8 +13,6 @@ import java.io.IOException;
 
 @WebServlet(name = "login", value = "/login")
 public class Login extends HttpServlet {
-    private String login;
-    private String password;
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
@@ -33,18 +31,22 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        login = request.getParameter("loginLogin");
-        password = request.getParameter("passwordLogin");
+        // get parameters from POST
+        String login = request.getParameter("loginLogin");
+        String password = request.getParameter("passwordLogin");
 
+        // validate user data
         int status = User.userLoginValidate(login, password);
 
         User user = null;
+
+        // check if record exist
         try {
             user = login(login, password);
         } catch (Exception e) {
@@ -52,13 +54,13 @@ public class Login extends HttpServlet {
         }
 
         if (status == 0) {
-            if (user != null) {
+            if (user != null) { // successful login
                 Cookies.setSessionCookie(request, response, user);
                 response.sendRedirect(request.getContextPath() + "/index?status=loggedin");
-            } else {
+            } else { // if record do not exist in database
                 response.sendRedirect(request.getContextPath() + "/index?status=login_error0");
             }
-        } else {
+        } else { // form validation error
             response.sendRedirect(request.getContextPath() + "/index?status=login_error" + status);
         }
     }

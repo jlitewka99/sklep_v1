@@ -11,7 +11,7 @@ class AuctionTest {
     private Auction auctionTest;
     @BeforeEach
     void setUp(){
-        auctionTest = new Auction("id","title","description",37.21);
+        auctionTest = new Auction(1,"title","description",37.21);
     }
     @Test
     void test_auctionValidate(){
@@ -38,11 +38,11 @@ class AuctionTest {
 
     @Test
     void test_deleteIllegalCharacters(){
-        Assertions.assertAll(()->Assertions.assertEquals(Auction.deleteIllegalCharacters("string"),"string"),
-                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("\"string"),"string"),
-                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("stri\"ng"),"string"),
-                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters("\"string'"),"string"),
-                ()->Assertions.assertEquals(Auction.deleteIllegalCharacters(null),""));
+        Assertions.assertAll(()->Assertions.assertEquals(Auction.filter("string"),"string"),
+                ()->Assertions.assertEquals(Auction.filter("\"string"),"string"),
+                ()->Assertions.assertEquals(Auction.filter("stri\"ng"),"string"),
+                ()->Assertions.assertEquals(Auction.filter("\"string'"),"string"),
+                ()->Assertions.assertEquals(Auction.filter(null),""));
 
     }
 

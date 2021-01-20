@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="fragment/head.jspf" %>
+    <%@ include file="fragment/head.jsp" %>
     <!-- Page title -->
     <title>LitewkaBuy</title>
 </head>
@@ -19,11 +19,7 @@
 <jsp:include page="fragment/searchbar.jsp"/>
 <!-- /Searchbar -->
 
-<%
-    Auction auction = (Auction)request.getAttribute("AUCTION");
-%>
-
-<div class="row justify-content-md-center" style="margin: 0px; padding: 0px;">
+<div class="row justify-content-md-center" style="margin: 0px; padding: 0px; min-height: 50vh;">
     <!-- Pictures -->
     <div class="col-md-5">
         <!-- Top slideshow -->
@@ -67,13 +63,13 @@
     </div>
     <!-- /Pictures -->
     <div class="col-md-5">
-        <h1><%=auction.getTitle()%></h1>
-        <p><%=auction.getDescription()%> <%=auction.getUser().getLogin()%></p>
+        <h1>${AUCTION.title}</h1>
+        <p>${AUCTION.description} ${AUCTION.user.login}</p>
     </div>
 </div>
 
 
-<jsp:include page="fragment/footer.jspf"/>
+<jsp:include page="fragment/footer.jsp"/>
 
 
 <!-- JS -->

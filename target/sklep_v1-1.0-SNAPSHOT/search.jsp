@@ -1,14 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.model.Auction" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.AdditionalComponents.Category" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 
-    <%@ include file="fragment/head.jspf" %>
+    <%@ include file="fragment/head.jsp" %>
 
     <!-- Page title -->
     <title>LitewkaBuy</title>
@@ -23,10 +20,10 @@
 <!-- /Searchbar -->
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 70vh;">
     <div class="row">
         <!-- Categories -->
-        <div class="col-md-2">
+        <div class="col-md-3">
             <ul class="list-group">
                 <c:forEach var="tempCategory" items="${CATEGORIES}">
                 <c:choose>
@@ -48,16 +45,16 @@
         </div>
         <!-- /Categories -->
 
-        <div class="col-md-10">
+        <div class="col-md-9">
             <!-- Products -->
             <c:forEach var="tempAuction" items="${AUCTIONS}">
-                <a href="product?id=${tempAuction.auctionID}">
+                <a href="auction?id=${tempAuction.auctionID}">
                     <div class="row">
                         <div class="card mb-3">
                             <div class="row g-0">
                                 <div class="col-md-2">
                                     <img src="https://via.placeholder.com/150x9000?text=1"
-                                         style="width: 100%; max-height: 200px; object-fit: cover;" alt="...">
+                                         style="width: 100%; max-height: 200px; object-fit: cover;" alt="img">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -80,24 +77,9 @@
     </div>
 </div>
 
-<nav aria-label="...">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
 
 <!-- Footer -->
-<jsp:include page="fragment/footer.jspf"/>
+<jsp:include page="fragment/footer.jsp"/>
 <!-- /Footer -->
 
 <!-- JS -->

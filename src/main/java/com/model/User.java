@@ -1,7 +1,7 @@
 package com.model;
 
 public class User {
-    private String userID;
+    private int userID;
     private String login;
     private String password;
     private String email;
@@ -11,11 +11,11 @@ public class User {
     private Double avgRating;
     private int numberOfRatings;
 
-    public User(String userID) {
+    public User(int userID) {
         this.userID = userID;
     }
 
-    public User(String userID, String login) {
+    public User(int userID, String login) {
         this.userID = userID;
         this.login = login;
     }
@@ -33,7 +33,7 @@ public class User {
         return street;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
@@ -65,32 +65,30 @@ public class User {
         return numberOfRatings;
     }
 
-    public static int userLoginValidate(String login, String password){    //Funkcja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
-        if(login==null || password==null ) {
+    public static int userLoginValidate(String login, String password) {    //Funkcja sprawdzająca wstępną poprawność danych logowania czyli długość loginu większa od 4 i długość hasła większa bądź równa 5.
+        if (login == null || password == null) {
             return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
         }
-        if(login.contains("'") || login.contains("\"") ||  password.contains("'") || password.contains("\"")){
-           return 4;                                                //Funkcja zwraca 4 gdy dane zawierają niedozwolone znaki
-       }
-        if(login.length()>=4){
-            if(password.length()>=6){
+        if (login.contains("'") || login.contains("\"") || password.contains("'") || password.contains("\"")) {
+            return 4;                                                //Funkcja zwraca 4 gdy dane zawierają niedozwolone znaki
+        }
+        if (login.length() >= 4) {
+            if (password.length() >= 6) {
                 return 0;                                           //Funkcja zwraca 0, gdy dane są wstępnie poprawne.
-            }
-            else{
+            } else {
                 return 1;                                           //Funkcja zwraca 1, gdy login jest poprawny, ale hasło jest krótsze.
             }
-        }
-        else{
-            if(password.length()>=6){
+        } else {
+            if (password.length() >= 6) {
                 return 2;                                           //Funkcja zwraca 2, gdy login jest za krótki ale jest poprawne.
-            }
-            else{
+            } else {
                 return 3;                                           //Funkcja zwraca 3, gdy obie są nie poprawne.
             }
         }
     }
+
     public static int userRegisterValidate(String email, String login, String password, String repeatPassword, String city, String postCode, String street) {         //Metoda sprawdza wstępnie dane podane przez użytkownika i zwraca odpowiednie kody błędów jeśli któraś jest niepoprawna.
-        if(email==null || login==null  || password==null || repeatPassword==null || city==null || postCode==null || street==null) {
+        if (email == null || login == null || password == null || repeatPassword == null || city == null || postCode == null || street == null) {
             return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
         }
         if (!email.contains("@") || email.lastIndexOf('.') < email.indexOf('@')) {
@@ -127,20 +125,20 @@ public class User {
         if (postCode.length() < 6 || !postCode.contains("-")) {
             return 6;                                                        //Jeżeli kod pocztowy jest mniejszy niż 6 lub kod pocztowy nie zawiera znaku - to zwracany jest błąd
         }
-        if(street.length()<1){
+        if (street.length() < 1) {
             return 7;                                                          //Jeżeli w miejsce ulicy nie wpisano żadnego znaku to zwracane jest błąd 7
         }
         boolean containsNumber = false;
-        for(int i=0; i<street.length(); i++){
-            if(street.charAt(i)>='0' && street.charAt(i)<='9'){
-                containsNumber=true;
+        for (int i = 0; i < street.length(); i++) {
+            if (street.charAt(i) >= '0' && street.charAt(i) <= '9') {
+                containsNumber = true;
                 break;
             }
         }
-        if(!containsNumber){
+        if (!containsNumber) {
             return 7;                                                           //Jeżeli w miejscu ulicy nie wpisano żadnej liczby to zwracany jest błąd 7
         }
-        if(city.length()<3){
+        if (city.length() < 3) {
             return 8;                                                           //Jeżeli nazwa miejscowości jest mniejsza od 3 to zwracany jest błąd 8
         }
         if (email.contains("'") || email.contains("\"") || login.contains("'") || login.contains("\"") || password.contains("'") || password.contains("\"") ||

@@ -14,7 +14,7 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
-        testUser = new User("id", "login");
+        testUser = new User(1, "login");
     }
 
     @AfterEach

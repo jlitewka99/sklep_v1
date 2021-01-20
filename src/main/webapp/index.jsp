@@ -6,7 +6,7 @@
 <html>
 <head>
 
-    <%@ include file="fragment/head.jspf" %>
+    <%@ include file="fragment/head.jsp" %>
 
 
     <!-- Page title -->
@@ -109,7 +109,7 @@
     </div>
 </div>
 
-<jsp:include page="fragment/footer.jspf"/>
+<jsp:include page="fragment/footer.jsp"/>
 
 
 <!-- JS -->

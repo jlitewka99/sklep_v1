@@ -1,4 +1,4 @@
-package com.AdditionalComponents;
+package com.model;
 
 public class Category {
     private String category;

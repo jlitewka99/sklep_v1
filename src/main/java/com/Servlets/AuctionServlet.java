@@ -11,8 +11,8 @@ import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebServlet(name = "ProductServlet", value = "/product")
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "AuctionServlet", value = "/auction")
+public class AuctionServlet extends HttpServlet {
 
     private String auctionId;
 

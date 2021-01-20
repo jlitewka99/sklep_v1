@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Auction {
-    private String auctionID;
+    private int auctionID;
     private String title;
     private String description;
     private double price;
@@ -15,17 +15,28 @@ public class Auction {
     private Date startDate;
     private Date endDate;
     private int numberOfPhotos;
-    private String userId;
+    private int userId;
     private User user;
 
-    public Auction(String auctionID, String title, String description, double price) {
+    public Auction(String title, String description, double price, String category, Date endDate, int numberOfPhotos, User user) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.startDate = new java.sql.Date(System.currentTimeMillis());
+        this.endDate = endDate;
+        this.numberOfPhotos = numberOfPhotos;
+        this.user = user;
+    }
+
+    public Auction(int auctionID, String title, String description, double price) {
         this.auctionID = auctionID;
         this.title = title;
         this.description = description;
         this.price = price;
     }
 
-    public Auction(String auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, String userId) {
+    public Auction(int auctionID, String title, String description, double price, Date startDate, Date endDate, int numberOfPhotos, int userId) {
         this.auctionID = auctionID;
         this.title = title;
         this.description = description;
@@ -36,7 +47,7 @@ public class Auction {
         this.userId = userId;
     }
 
-    public Auction(String auctionID, String title, String description, double price, String category) {
+    public Auction(int auctionID, String title, String description, double price, String category) {
         this.auctionID = auctionID;
         this.title = title;
         this.description = description;
@@ -48,7 +59,12 @@ public class Auction {
         return categoryList;
     }
 
-    public int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
+    public static java.sql.Date dateConvert(java.util.Date utilDate) {
+        java.sql.Date d = new java.sql.Date(utilDate.getTime());
+        return d;
+    }
+
+    public static int auctionValidate(String title, String description, int pictureCount, String category, Date endDate, double price) {    //Metoda sprawdzająca dane wysłane przy tworzeniu aukcji
         if(title==null || description==null  || category==null || endDate==null){
             return 100;                                                                                                             //Zabezpieczenie przed wysłaniem nulla do metody
         }
@@ -77,7 +93,7 @@ public class Auction {
         return 0;                                                                                                                   //Zwracane jest 0, gdy podano właściwe dane
     }
 
-    public static String deleteIllegalCharacters(String phrase) {                                                   //Metoda zwracająca ciąg znaków po usunięciu znaków niedozwolonych czyli " oraz '
+    public static String filter(String phrase) {                                                   //Metoda zwracająca ciąg znaków po usunięciu znaków niedozwolonych czyli " oraz '
         if(phrase==null){
             return "";
         }
@@ -97,7 +113,7 @@ public class Auction {
         return user;
     }
 
-    public String getAuctionID() {
+    public int getAuctionID() {
         return auctionID;
     }
 
@@ -125,8 +141,11 @@ public class Auction {
         return numberOfPhotos;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
+    public String getCategory() {
+        return category;
+    }
 }

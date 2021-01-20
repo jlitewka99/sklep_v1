@@ -1,4 +1,4 @@
-package com.AdditionalComponents;
+package com.model;
 
 
 import com.model.User;
@@ -74,7 +74,7 @@ public class Cookies extends HttpServlet {
 
                     cookieId = tempCookie.getValue();
                 } else { // if sessionCookie do not exist create new
-                    Cookie sessionCookie = new Cookie("sessionCookie", user.getUserID());
+                    Cookie sessionCookie = new Cookie("sessionCookie", Integer.toString(user.getUserID()));
 
                     sessionCookie.setMaxAge(60 * 60 * 24 * 365);
                     response.addCookie(sessionCookie);
@@ -82,7 +82,7 @@ public class Cookies extends HttpServlet {
             }
         } else { // if any cookie do not exist create new for loginID
 
-            Cookie sessionCookie = new Cookie("sessionCookie",  user.getUserID());
+            Cookie sessionCookie = new Cookie("sessionCookie",  Integer.toString(user.getUserID()));
 
             sessionCookie.setMaxAge(60 * 60 * 24 * 365);
             response.addCookie(sessionCookie);

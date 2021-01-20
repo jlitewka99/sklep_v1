@@ -59,7 +59,7 @@ public class UserDAO {
             myRs = myStmt.executeQuery(sql);
 
             if (myRs.next()) {
-                String id = myRs.getString("id");
+                int id = myRs.getInt("id");
                 return new User(id);
             }
 
@@ -93,7 +93,7 @@ public class UserDAO {
         return false;
     }
 
-    public User getUserById(String id) throws Exception {
+    public User getUserById(int id) throws Exception {
         Connection myConn = null;
         Statement myStmt = null;
         ResultSet myRs = null;

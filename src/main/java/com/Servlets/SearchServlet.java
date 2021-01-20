@@ -1,6 +1,6 @@
 package com.Servlets;
 
-import com.AdditionalComponents.Category;
+import com.model.Category;
 import com.model.Auction;
 import com.DAO.AuctionDAO;
 import com.DAO.CategoryDAO;
@@ -11,7 +11,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet(name = "SearchServlet", value = "/search")
@@ -48,7 +47,10 @@ public class SearchServlet extends HttpServlet {
 
 
         category = request.getParameter("category");
-        searchtext = request.getParameter("searchtext");
+        searchtext = request.getParameter("searchtext"); // get parameters from URL
+
+        searchtext = Auction.filter(searchtext);
+
         request.setAttribute("searchtext", searchtext);
 
         if (category != null && searchtext != null) {
@@ -73,9 +75,9 @@ public class SearchServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (category == null && searchtext == null) {
+        } else if (category == null) { // category == null && searchtext == null
 
-        } else if (category != null && searchtext == null) {
+        } else { // category != null && searchtext == null
             try {
                 getAuctionsByCategory(request, response);
             } catch (Exception e) {
