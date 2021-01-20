@@ -26,10 +26,13 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <b>Kupione przedmioty</b>
+                    <b>Sprzedane przedmioty</b>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Użytkownik ${COOK}
+                    Użytkownik ${USER.login}
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Użytkownik ${USER.avgRating}/5 (ilość ocen ${USER.numberOfRatings})
                 </li>
             </ul>
         </div>
@@ -38,30 +41,65 @@
         <div class="col-md-9">
             <!-- Products -->
             <c:forEach var="tempAuction" items="${AUCTIONS}">
-                <a href="auction?id=${tempAuction.auctionID}">
-                    <div class="row">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img src="https://via.placeholder.com/150x9000?text=1"
-                                         style="width: 100%; max-height: 200px; object-fit: cover;" alt="img">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${tempAuction.title}</h5>
-                                        <p class="card-text">
-                                            d
-                                                ${tempAuction.description}
-                                        </p>
-                                        <p class="card-text"><small
-                                                class="text-muted">Cena ${tempAuction.price}zł</small>
-                                        </p>
-                                    </div>
+                <div class="row">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-2">
+                                <img src="https://via.placeholder.com/150x9000?text=1"
+                                     style="width: 100%; max-height: 200px; object-fit: cover;" alt="img">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${tempAuction.title}</h5>
+                                    <p class="card-text">
+                                            ${tempAuction.description}
+                                    </p>
+                                    <p class="card-text"><small
+                                            class="text-muted">Cena ${tempAuction.price}zł</small>
+                                    </p>
+                                    <c:choose>
+                                        <c:when test="${tempAuction.opinion eq 0}">
+                                            <!-- Rate form -->
+                                            <form method="post" action="rate">
+                                                <input id="productId" name="productId" type="hidden" value="${tempAuction.auctionID}">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="rateRadio"
+                                                           id="inlineRadio1" value="1">
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="rateRadio"
+                                                           id="inlineRadio2" value="2">
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="rateRadio"
+                                                           id="inlineRadio3" value="3">
+                                                    <label class="form-check-label" for="inlineRadio1">3</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="rateRadio"
+                                                           id="inlineRadio4" value="4">
+                                                    <label class="form-check-label" for="inlineRadio1">4</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="rateRadio"
+                                                           id="inlineRadio5" value="5">
+                                                    <label class="form-check-label" for="inlineRadio1">5</label>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Oceń sprzedawcę</button>
+                                            </form>
+                                            <!-- /Rate form -->
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>Oceniono na ${tempAuction.opinion}</p>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </c:forEach>
             <!-- /Products -->
         </div>

@@ -15,6 +15,56 @@ public class AuctionDAO {
         this.dataSource = dataSource;
     }
 
+    public void rateAuction(int id, int opinion) throws Exception{
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try{
+            myConn = dataSource.getConnection();
+            String sql = "UPDATE sold SET opinion=? WHERE id=?";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setInt(1, opinion);
+            myStmt.setInt(2, id);
+
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn, myStmt, null);
+        }
+
+    }
+
+    public List<Auction> getAuctionsById(int id) throws Exception { // method returns auctions by SearchText
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT * FROM auction WHERE userid='" + id + "'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            List<Auction> auctions = new ArrayList<>();
+
+            while (myRs.next()) {
+                int auctionID = myRs.getInt("id");
+                String title = myRs.getString("title");
+                String description = myRs.getString("description");
+                Double price = myRs.getDouble("price");
+
+                Auction tempAuction = new Auction(auctionID, title, description, price);
+                auctions.add(tempAuction);
+            }
+            return auctions;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+    }
 
     public List<Auction> getBoughtList(int id) throws Exception { // method returns auctions by SearchText
         Connection myConn = null;
@@ -35,8 +85,10 @@ public class AuctionDAO {
                 String title = myRs.getString("title");
                 String description = myRs.getString("description");
                 Double price = myRs.getDouble("price");
+                int status = myRs.getInt("status");
+                int opinion = myRs.getInt("opinion");
 
-                Auction tempAuction = new Auction(auctionID, title, description, price);
+                Auction tempAuction = new Auction(auctionID, title, description, price, opinion, status);
                 auctions.add(tempAuction);
             }
             return auctions;

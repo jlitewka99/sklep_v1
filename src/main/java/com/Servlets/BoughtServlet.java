@@ -5,6 +5,7 @@ import com.DAO.CategoryDAO;
 import com.DAO.UserDAO;
 import com.model.Auction;
 import com.model.Cookies;
+import com.model.User;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -24,12 +25,19 @@ public class BoughtServlet extends HttpServlet {
 
     private CategoryDAO categoryDAO;
 
+    private UserDAO userDAO;
+
 
     @Override
     public void init() throws ServletException {
         super.init();
         try {
             auctionDAO = new AuctionDAO(dataSource);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            userDAO = new UserDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,13 +50,18 @@ public class BoughtServlet extends HttpServlet {
         int sessionId = Integer.parseInt(Cookies.getSessionId(request, response));
 
         // check if logged in
-        if(sessionId > 0){
+        if (sessionId > 0) {
             try {
                 getBoughtList(request, response, sessionId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
+            try {
+                getUserById(request, response, sessionId);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
             response.sendRedirect(request.getContextPath() + "/index?status=not_leggedin");
         }
 
@@ -61,6 +74,13 @@ public class BoughtServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+
+    private void getUserById(HttpServletRequest request, HttpServletResponse response, int sessionId) throws Exception {
+        User user = userDAO.getUserById(sessionId);
+
+        request.setAttribute("USER", user);
+        // add User to the request
     }
 
     private void getBoughtList(HttpServletRequest request, HttpServletResponse response, int id) throws Exception {

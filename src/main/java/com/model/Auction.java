@@ -19,6 +19,18 @@ public class Auction {
     private int opinion;
     private int status;
 
+    public boolean isOpinionSet(){
+        return opinion == 0;
+    }
+
+    public Auction(int auctionID, String title, String description, double price, int opinion, int status) {
+        this.auctionID = auctionID;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.opinion = opinion;
+        this.status = status;
+    }
 
     public Auction(int auctionID, String title, String description, double price, User user) {
         this.auctionID = auctionID;
