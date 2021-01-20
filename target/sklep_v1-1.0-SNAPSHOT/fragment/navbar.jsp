@@ -28,11 +28,10 @@
                                 Konto
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Ustawienia</a></li>
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addAuctionModal"
                                        role="button" aria-expanded="false">Nowa aukcja</a></li>
-                                <li><a class="dropdown-item" href="#">Sprzedane</a></li>
-                                <li><a class="dropdown-item" href="#">Kupione</a></li>
+                                <li><a class="dropdown-item" href="sold">Sprzedane</a></li>
+                                <li><a class="dropdown-item" href="bought">Kupione</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

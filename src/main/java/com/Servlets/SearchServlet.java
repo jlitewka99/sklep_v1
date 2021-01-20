@@ -91,6 +91,7 @@ public class SearchServlet extends HttpServlet {
         }
 
 
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
         dispatcher.forward(request, response);
         // send to JSP page

@@ -15,6 +15,69 @@ public class AuctionDAO {
         this.dataSource = dataSource;
     }
 
+
+    public List<Auction> getBoughtList(int id) throws Exception { // method returns auctions by SearchText
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT * FROM sold WHERE buyerid='" + id + "'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            List<Auction> auctions = new ArrayList<>();
+
+            while (myRs.next()) {
+                int auctionID = myRs.getInt("id");
+                String title = myRs.getString("title");
+                String description = myRs.getString("description");
+                Double price = myRs.getDouble("price");
+
+                Auction tempAuction = new Auction(auctionID, title, description, price);
+                auctions.add(tempAuction);
+            }
+            return auctions;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+    }
+
+    public List<Auction> getSoldList(int id) throws Exception { // method returns auctions by SearchText
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT * FROM auction WHERE id='" + id + "'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            List<Auction> auctions = new ArrayList<>();
+
+            while (myRs.next()) {
+                int auctionID = myRs.getInt("id");
+                String title = myRs.getString("title");
+                String description = myRs.getString("description");
+                Double price = myRs.getDouble("price");
+
+                Auction tempAuction = new Auction(auctionID, title, description, price);
+                auctions.add(tempAuction);
+            }
+            return auctions;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+    }
+
+
+
     public void removeAuctionById(Auction auction) throws Exception{
         Connection myConn = null;
         PreparedStatement myStmt = null;

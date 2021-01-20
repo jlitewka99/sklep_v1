@@ -44,15 +44,17 @@ public class Cookies extends HttpServlet {
         {
             for (Cookie tempCookie : theCookies) {
                 if ("sessionCookie".equals(tempCookie.getName())) { // if user id cookie exist
-
                     cookieId = tempCookie.getValue();
-                } else { // if sessionCookie do not exist create new
-                    Cookie sessionCookie = new Cookie("sessionCookie", "0");
-
-                    sessionCookie.setMaxAge(60 * 60 * 24 * 365);
-                    response.addCookie(sessionCookie);
+                    return cookieId;
                 }
             }
+            // if sessionCookie do not exist create new
+            Cookie sessionCookie = new Cookie("sessionCookie", "0");
+
+            sessionCookie.setMaxAge(60 * 60 * 24 * 365);
+            response.addCookie(sessionCookie);
+            return "0";
+
         } else { // if any cookie do not exist create new for loginID
 
             Cookie sessionCookie = new Cookie("sessionCookie", "0");
