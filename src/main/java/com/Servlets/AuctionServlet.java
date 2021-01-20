@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "AuctionServlet", value = "/auction")
 public class AuctionServlet extends HttpServlet {
 
-    private String auctionId;
+    private int auctionId;
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
@@ -45,7 +45,7 @@ public class AuctionServlet extends HttpServlet {
         Auction auction = null;
 
         // get GET parameter
-        auctionId = request.getParameter("id");
+        auctionId = Integer.parseInt(request.getParameter("id"));
 
         // get auction from database
         try {

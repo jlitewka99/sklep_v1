@@ -15,6 +15,59 @@ public class AuctionDAO {
         this.dataSource = dataSource;
     }
 
+    public void removeAuctionById(Auction auction) throws Exception{
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try{
+            myConn = dataSource.getConnection();
+            String sql = "DELETE FROM auction WHERE id=?";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setInt(1, auction.getAuctionID());
+
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn, myStmt, null);
+        }
+
+    }
+
+    public void addAuctionToArchive(Auction auction, int buyerId) throws Exception {
+
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "INSERT INTO sold "
+                    + "(title, description, numberofphotos, startdate, soldtime, sellerid, price, category, buyerid, id) "
+                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setString(1, auction.getTitle());
+            myStmt.setString(2, auction.getDescription());
+            myStmt.setInt(3, auction.getNumberOfPhotos());
+            myStmt.setDate(4, auction.getStartDate());
+
+            myStmt.setDate(5, auction.getEndDate());
+            myStmt.setInt(6, auction.getUser().getUserID());
+            myStmt.setDouble(7, auction.getPrice());
+            myStmt.setString(8, auction.getCategory());
+            myStmt.setInt(9, buyerId);
+            myStmt.setInt(10, auction.getAuctionID());
+
+            myStmt.execute();
+
+        } finally {
+            close(myConn, myStmt, null);
+        }
+    }
+
     public void addAuction(Auction auction) throws Exception {
 
         Connection myConn = null;
@@ -24,7 +77,7 @@ public class AuctionDAO {
             myConn = dataSource.getConnection();
 
             String sql = "INSERT INTO auction "
-                    + "(title, description, numberofphotos, startdate, enddate, userid, price, category) "
+                    + "(title, description, numberofphotos, startdate, enddate, sellerid, price, category) "
                     + "values (?, ?, ?, ?, ?, ?, ?, ?)";
 
             myStmt = myConn.prepareStatement(sql);
@@ -33,7 +86,7 @@ public class AuctionDAO {
             myStmt.setString(2, auction.getDescription());
             myStmt.setInt(3, auction.getNumberOfPhotos());
             myStmt.setDate(4, auction.getStartDate());
-            myStmt.setDate(5, auction.getEndDate());
+            myStmt.setDate(5, new java.sql.Date(System.currentTimeMillis()));
             myStmt.setInt(6, auction.getUser().getUserID());
             myStmt.setDouble(7, auction.getPrice());
             myStmt.setString(8, auction.getCategory());
@@ -138,7 +191,7 @@ public class AuctionDAO {
 
     }
 
-    public Auction getAuctionById(String id) throws Exception { // method returns auction by ID
+    public Auction getAuctionById(int id) throws Exception { // method returns auction by ID
         Connection myConn = null;
         Statement myStmt = null;
         ResultSet myRs = null;
@@ -150,7 +203,7 @@ public class AuctionDAO {
                     "auction.price, auction.startdate, auction.enddate, " +
                     "auction.numberofphotos, user.id AS uid, " +
                     "user.login AS ulogin, user.avgrating AS uavgrating, " +
-                    "user.numberofratings AS unumberofratings " +
+                    "user.numberofratings AS unumberofratings, auction.category " +
                     "FROM auction INNER JOIN user ON auction.userid=user.id " +
                     "WHERE auction.id='" + id + "'";
 
@@ -171,11 +224,12 @@ public class AuctionDAO {
                 Double avgRating = myRs.getDouble("uavgrating");
                 int numberOfRatings = myRs.getInt("unumberofratings");
 
+                String category = myRs.getString("category");
 
 
 
 
-                return new Auction(auctionID, title, description, price, startDate, endDate, numberOfPhotos, new User(userId, login, avgRating, numberOfRatings));
+                return new Auction(auctionID, title, description, price, startDate, endDate, numberOfPhotos, category, new User(userId, login, avgRating, numberOfRatings));
             }
 
         } finally {
