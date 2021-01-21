@@ -63,7 +63,7 @@ public class MyAuctionsServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/index?status=not_leggedin");
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/bought.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/myitems.jsp");
         dispatcher.forward(request, response);
 
 

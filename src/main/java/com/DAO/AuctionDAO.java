@@ -22,7 +22,7 @@ public class AuctionDAO {
         try {
             myConn = dataSource.getConnection();
 
-            String sql = "SELECT * FROM auctions WHERE userid='" + userId + "'";
+            String sql = "SELECT * FROM auction WHERE userid='" + userId + "'";
 
             myStmt = myConn.createStatement();
             myRs = myStmt.executeQuery(sql);
@@ -34,10 +34,8 @@ public class AuctionDAO {
                 String title = myRs.getString("title");
                 String description = myRs.getString("description");
                 Double price = myRs.getDouble("price");
-                int status = myRs.getInt("status");
-                int opinion = myRs.getInt("opinion");
 
-                Auction tempAuction = new Auction(auctionID, title, description, price, opinion, status);
+                Auction tempAuction = new Auction(auctionID, title, description, price);
                 auctions.add(tempAuction);
             }
             return auctions;
