@@ -32,11 +32,12 @@ public class Auction {
         this.status = status;
     }
 
-    public Auction(int auctionID, String title, String description, double price, User user) {
+    public Auction(int auctionID, String title, String description, double price, int status, User user) {
         this.auctionID = auctionID;
         this.title = title;
         this.description = description;
         this.price = price;
+        this.status = status;
         this.user = user;
     }
 

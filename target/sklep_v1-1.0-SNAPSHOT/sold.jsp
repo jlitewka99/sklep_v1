@@ -59,6 +59,10 @@
                                     <p class="card-text"><small
                                             class="text-muted">Cena ${tempAuction.price}zł</small>
                                     </p>
+                                        ${tempAuction.status}
+                                        <c:if test="${tempAuction.status eq 1}">
+                                            <p>Przedmiot został zwrócony</p>
+                                        </c:if>
                                 </div>
                             </div>
                         </div>

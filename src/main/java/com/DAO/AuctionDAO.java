@@ -181,7 +181,7 @@ public class AuctionDAO {
         try {
             myConn = dataSource.getConnection();
 
-            String sql = "SELECT sold.id, sold.title, sold.description, sold.price, " +
+            String sql = "SELECT sold.id, sold.title, sold.description, sold.price, sold.status," +
                     "user.login, user.city, user.street, user.email " +
                     "FROM sold INNER JOIN user ON sold.buyerid=user.id WHERE sellerid='" + id + "'";
 
@@ -192,6 +192,7 @@ public class AuctionDAO {
 
             while (myRs.next()) {
                 int auctionID = myRs.getInt("id");
+                int status = myRs.getInt("status");
                 String title = myRs.getString("title");
                 String description = myRs.getString("description");
                 Double price = myRs.getDouble("price");
@@ -201,7 +202,7 @@ public class AuctionDAO {
                 String street = myRs.getString("street");
                 String email = myRs.getString("email");
 
-                Auction tempAuction = new Auction(auctionID, title, description, price, new User(login, email, city, street));
+                Auction tempAuction = new Auction(auctionID, title, description, price, status, new User(login, email, city, street));
                 auctions.add(tempAuction);
             }
             return auctions;
