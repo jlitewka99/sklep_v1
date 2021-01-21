@@ -48,40 +48,20 @@
                 <div class="col-md-8">
                     <!-- Top slideshow -->
                     <section class="slider-for" data-sizes="50vw">
+                        <c:forEach var="i" begin="1" end="7">
                         <div>
-                            <img src="https://via.placeholder.com/1500x700?text=1">
+                            <img src="http://jlitewka.pl/strona/images/${i}.png">
                         </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=2">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=3">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=4">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=5">
-                        </div>
+                        </c:forEach>
                     </section>
                     <!-- /Top slideshow -->
                     <!-- Bottom slideshow -->
                     <section class="slider-nav d-none d-sm-block" data-sizes="50vw">
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=1">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=2">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=3">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=4">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=5">
-                        </div>
+                        <c:forEach var="i" begin="1" end="7">
+                            <div>
+                                <img src="http://jlitewka.pl/strona/images/${i}.png">
+                            </div>
+                        </c:forEach>
                     </section>
                     <!-- /Bottom slideshow -->
 
@@ -93,12 +73,9 @@
             <div class="row">
                 <div class="col-md-8">
                     Poznaj oferte naszych sponsorów. Kupuj produkty z reklam, aby wesprzeć rozwój naszej witryny! Kup dziś, a produkt otrzymasz wczoraj!* <br>
-                    <small>*Przedstawiona oferta ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</small>
                 </div>
                 <div class="col-md-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa dicta dolor, dolorem doloribus
-                    enim expedita fugit ipsa laborum laudantium non, nostrum quia, quisquam repudiandae sequi tempore
-                    vel. Excepturi, quaerat!
+                    <small>*Przedstawiona oferta ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</small>
                 </div>
 
             </div>

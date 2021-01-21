@@ -73,12 +73,9 @@
             <div class="row">
                 <div class="col-md-8">
                     Poznaj oferte naszych sponsorów. Kupuj produkty z reklam, aby wesprzeć rozwój naszej witryny! Kup dziś, a produkt otrzymasz wczoraj!* <br>
-                    <small>*Przedstawiona oferta ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</small>
                 </div>
                 <div class="col-md-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa dicta dolor, dolorem doloribus
-                    enim expedita fugit ipsa laborum laudantium non, nostrum quia, quisquam repudiandae sequi tempore
-                    vel. Excepturi, quaerat!
+                    <small>*Przedstawiona oferta ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</small>
                 </div>
 
             </div>

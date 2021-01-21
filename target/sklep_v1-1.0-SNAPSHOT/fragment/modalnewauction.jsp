@@ -6,7 +6,7 @@
 %>
 <div class="modal fade" id="addAuctionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content needs-validation" id="newAuction" method="post" action="addauction" novalidate>
+        <form class="modal-content needs-validation" id="newAuction" method="post" action="addauction" enctype="multipart/form-data" novalidate>
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Wystaw przedmiot</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
