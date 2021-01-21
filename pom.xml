@@ -67,11 +67,6 @@
                     <packagingExcludes>main/java/webapp/META-INF/context.xml</packagingExcludes>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
-    <build>
-        <finalName>MavenWeb</finalName>
-        <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -79,4 +74,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
