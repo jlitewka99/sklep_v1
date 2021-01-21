@@ -31,7 +31,7 @@
                             <a href="https://allegro.pl/regulamin">Regulamin</a>
                         </li>
                         <li>
-                            <a href="#!">Link 4</a>
+                            <a href="https://www.link4.pl/">Link 4</a>
                         </li>
                     </ul>
                 </div>
