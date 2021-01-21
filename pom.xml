@@ -67,11 +67,6 @@
                     <packagingExcludes>main/java/webapp/META-INF/context.xml</packagingExcludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.0</version>
-            </plugin>
         </plugins>
     </build>
 
