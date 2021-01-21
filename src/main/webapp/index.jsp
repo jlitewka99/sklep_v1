@@ -87,16 +87,13 @@
 
                 </div>
                 <div class="col-md-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur inventore natus perspiciatis
-                    ut. Adipisci architecto asperiores assumenda consequuntur corporis distinctio eaque iusto molestias
-                    nisi vitae! Nihil pariatur quibusdam rem vero?
+                    Kupuj, sprzedawaj, zarabiaj. Już teraz dzieki LitewkaBuy. Zobacz już teraz, wyszukaj i kup - to takie proste! Zerowe marże, niskie ceny, GWARANCJA JAKOŚCI!!!
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque commodi dicta, dolores
-                    eligendi enim laborum natus nostrum rem rerum, saepe ut voluptate voluptatem? Dicta enim minima
-                    molestiae veniam veritatis?
+                    Poznaj oferte naszych sponsorów. Kupuj produkty z reklam, aby wesprzeć rozwój naszej witryny! Kup dziś, a produkt otrzymasz wczoraj!* <br>
+                    <small>*Przedstawiona oferta ma charakter informacyjny i nie stanowi oferty handlowej w rozumieniu Art.66 par.1 Kodeksu Cywilnego.</small>
                 </div>
                 <div class="col-md-4">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa dicta dolor, dolorem doloribus

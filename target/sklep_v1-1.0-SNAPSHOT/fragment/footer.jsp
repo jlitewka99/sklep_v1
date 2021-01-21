@@ -10,9 +10,8 @@
                     <h5 class="text-uppercase">Informacje</h5>
 
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                        molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-                        voluptatem veniam, est atque cumque eum delectus sint!
+                        Jesteśmy młodym, ambitnym zespołem otwartym na nowe wyzwania, które mobilizują nas do ciągłego rozwoju i zaspokajania potrzeb naszych Klientów. LitewkaBuy oraz grupa LitewkaCorp spółka z o.o.
+                        nie ponoszą odpowiedzialności za oszustwa i wyłudzenia wykonane za pomocą usługi LitewkaBuy.
                     </p>
                 </div>
                 <!--Grid column-->
@@ -23,7 +22,7 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!">Link 1</a>
+                            <a href="http://jlitewka.pl/">Kontakt</a>
                         </li>
                         <li>
                             <a href="#!">Link 2</a>
