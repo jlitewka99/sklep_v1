@@ -32,6 +32,7 @@
                                        role="button" aria-expanded="false">Nowa aukcja</a></li>
                                 <li><a class="dropdown-item" href="sold">Sprzedane</a></li>
                                 <li><a class="dropdown-item" href="bought">Kupione</a></li>
+                                <li><a class="dropdown-item" href="myauctions">Moje aukcje</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
