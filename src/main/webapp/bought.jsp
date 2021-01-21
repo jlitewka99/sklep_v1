@@ -57,6 +57,14 @@
                                     <p class="card-text"><small
                                             class="text-muted">Cena ${tempAuction.price}zł</small>
                                     </p>
+                                    <c:if test="${tempAuction.status eq 0}">
+                                        <!-- Rate form -->
+                                        <form method="post" action="returnitem">
+                                            <input id="productId" name="productId" type="hidden" value="${tempAuction.auctionID}">
+                                            <button type="submit" class="btn btn-primary">Zwróć do sprzedawcy</button>
+                                        </form>
+                                        <!-- /Rate form -->
+                                    </c:if>
                                     <c:choose>
                                         <c:when test="${tempAuction.opinion eq 0}">
                                             <!-- Rate form -->

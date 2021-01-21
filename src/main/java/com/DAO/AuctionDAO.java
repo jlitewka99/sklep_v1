@@ -15,6 +15,27 @@ public class AuctionDAO {
         this.dataSource = dataSource;
     }
 
+    public void changeStatus(int id, int status) throws Exception{
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try{
+            myConn = dataSource.getConnection();
+            String sql = "UPDATE sold SET status=? WHERE id=?";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setInt(1, status);
+            myStmt.setInt(2, id);
+
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn, myStmt, null);
+        }
+
+    }
+
     public List<Auction> getUserAuctions(int userId) throws Exception { // method returns auctions by SearchText
         Connection myConn = null;
         Statement myStmt = null;
