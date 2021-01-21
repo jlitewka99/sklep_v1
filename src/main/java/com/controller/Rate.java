@@ -12,6 +12,8 @@ import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @WebServlet(name = "Rate", value = "/rate")
 public class Rate extends HttpServlet {
@@ -22,6 +24,14 @@ public class Rate extends HttpServlet {
     private AuctionDAO auctionDAO;
 
     private UserDAO userDAO;
+
+    private double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
     @Override
     public void init() throws ServletException {
@@ -76,6 +86,7 @@ public class Rate extends HttpServlet {
 
             avgRating = ((avgRating * numberOfRatings + rating) / (numberOfRatings + 1));
 
+            avgRating = round(avgRating, 2);
 
             try {
                 rateUser(sellerId, avgRating);

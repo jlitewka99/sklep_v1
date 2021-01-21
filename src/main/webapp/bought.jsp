@@ -26,7 +26,7 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <b>Sprzedane przedmioty</b>
+                    <b>Kupione przedmioty</b>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Użytkownik ${USER.login}

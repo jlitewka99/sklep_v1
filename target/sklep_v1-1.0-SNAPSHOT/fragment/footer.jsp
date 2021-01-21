@@ -18,17 +18,17 @@
 
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
+                    <h5 class="text-uppercase">Linki</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="http://jlitewka.pl/">Kontakt</a>
+                            <a href="http://jlitewka.pl/">O nas</a>
                         </li>
                         <li>
-                            <a href="#!">Link 2</a>
+                            <a href="">Kontakt</a>
                         </li>
                         <li>
-                            <a href="#!">Link 3</a>
+                            <a href="https://allegro.pl/regulamin">Regulamin</a>
                         </li>
                         <li>
                             <a href="#!">Link 4</a>
