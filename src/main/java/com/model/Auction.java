@@ -10,7 +10,7 @@ public class Auction {
     private String title;
     private String description;
     private double price;
-    private static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "dziecko", "zdrowie", "sport", "motoryzacja"));
+    private static final List<String> categoryList = new ArrayList<>(Arrays.asList("elektronika", "moda", "dom", "supermarket", "dziecko","uroda", "zdrowie","kultura", "sport", "motoryzacja", "sztuka", "firma", "nieruchomosci"));
     private String category;
     private Date startDate;
     private Date endDate;
