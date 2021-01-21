@@ -12,6 +12,27 @@ public class UserDAO {
         this.dataSource = dataSource;
     }
 
+    public void rateUser(int id, Double avgrating) throws Exception{
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        try{
+            myConn = dataSource.getConnection();
+            String sql = "UPDATE user SET avgrating=?, numberofratings=numberofratings+1 WHERE id=?";
+
+            myStmt = myConn.prepareStatement(sql);
+
+            myStmt.setDouble(1, avgrating);
+            myStmt.setInt(2, id);
+
+
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn, myStmt, null);
+        }
+
+    }
 
     public void addUser(User user) throws Exception {
 

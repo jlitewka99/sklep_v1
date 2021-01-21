@@ -1,6 +1,5 @@
 package com.controller;
 
-
 import com.DAO.AuctionDAO;
 import com.DAO.UserDAO;
 import com.model.Cookies;
@@ -14,9 +13,8 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
-@WebServlet(name = "Rates", value = "/rates")
-public class RateServlet extends HttpServlet {
+@WebServlet(name = "Rate", value = "/rate")
+public class Rate extends HttpServlet {
 
     @Resource(name = "jdbc/32403572_sklep")
     private DataSource dataSource;
@@ -25,8 +23,6 @@ public class RateServlet extends HttpServlet {
 
     private UserDAO userDAO;
 
-
-
     @Override
     public void init() throws ServletException {
         super.init();
@@ -34,14 +30,13 @@ public class RateServlet extends HttpServlet {
             auctionDAO = new AuctionDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        try {
+        }try {
             userDAO = new UserDAO(dataSource);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,24 +45,20 @@ public class RateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         int cookieId = Integer.parseInt(Cookies.getSessionId(request, response));
         if (cookieId > 0) {
             int id = Integer.parseInt(request.getParameter("productId"));
             int rating = Integer.parseInt(request.getParameter("rateRadio"));
             int sellerId = 0;
-
             User user = null;
-
             PrintWriter out = response.getWriter();
 
-            /*
             try {
                 rateAuction(id, rating);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            */
 
             try {
                 sellerId = getSellerIdByAuctionId(id);
@@ -75,43 +66,37 @@ public class RateServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-
             try {
                 user = userDAO.getUserById(sellerId);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             Double avgRating = user.getAvgRating();
             int numberOfRatings = user.getNumberOfRatings();
 
-            out.print(user.getEmail());
             avgRating = ((avgRating * numberOfRatings + rating) / (numberOfRatings + 1));
 
 
             try {
-                rateUser(id, avgRating);
+                rateUser(sellerId, avgRating);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
         }
+        response.sendRedirect(request.getContextPath() + "/bought");
 
-
-        //response.sendRedirect(request.getContextPath() + "/bought");
     }
 
     private void rateUser(int id, Double avgRating) throws Exception{
         userDAO.rateUser(id, avgRating);
-
     }
 
-
-    private int getSellerIdByAuctionId(int id) throws Exception {
+    private int getSellerIdByAuctionId(int id) throws Exception{
         return auctionDAO.getSellerIdByAuctionId(id);
     }
-
     private void rateAuction(int id, int rating) throws Exception {
         auctionDAO.rateAuction(id, rating);
     }

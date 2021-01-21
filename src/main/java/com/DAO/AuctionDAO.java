@@ -15,6 +15,31 @@ public class AuctionDAO {
         this.dataSource = dataSource;
     }
 
+    public int getSellerIdByAuctionId(int id) throws Exception { // method returns auction by ID
+        Connection myConn = null;
+        Statement myStmt = null;
+        ResultSet myRs = null;
+
+        try {
+            myConn = dataSource.getConnection();
+
+            String sql = "SELECT sellerid FROM sold WHERE id='" + id + "'";
+
+            myStmt = myConn.createStatement();
+            myRs = myStmt.executeQuery(sql);
+
+            if (myRs.next()) {
+                int sellerId = myRs.getInt("sellerid");
+
+                return sellerId;
+            }
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+        return 0;
+    }
+
     public void rateAuction(int id, int opinion) throws Exception{
         Connection myConn = null;
         PreparedStatement myStmt = null;
