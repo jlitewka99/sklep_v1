@@ -48,40 +48,20 @@
                 <div class="col-md-8">
                     <!-- Top slideshow -->
                     <section class="slider-for" data-sizes="50vw">
+                        <c:forEach var="i" begin="1" end="7">
                         <div>
-                            <img src="https://via.placeholder.com/1500x700?text=1">
+                            <img src="http://jlitewka.pl/strona/images/${i}.png">
                         </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=2">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=3">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=4">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=5">
-                        </div>
+                        </c:forEach>
                     </section>
                     <!-- /Top slideshow -->
                     <!-- Bottom slideshow -->
                     <section class="slider-nav d-none d-sm-block" data-sizes="50vw">
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=1">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=2">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=3">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=4">
-                        </div>
-                        <div>
-                            <img src="https://via.placeholder.com/1500x700?text=5">
-                        </div>
+                        <c:forEach var="i" begin="1" end="7">
+                            <div>
+                                <img src="http://jlitewka.pl/strona/images/${i}.png">
+                            </div>
+                        </c:forEach>
                     </section>
                     <!-- /Bottom slideshow -->
 

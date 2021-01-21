@@ -10,14 +10,23 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 
 @WebServlet(name = "AddAuction", value = "/addauction")
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+        maxFileSize=1024*1024*10,      // 10MB
+        maxRequestSize=1024*1024*50)   // 50MB
 public class AddAuction extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+    private static final String SAVE_DIR = "WebContent\\images\\users";
 
     private Date endDate;
 
@@ -77,6 +86,11 @@ public class AddAuction extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+
+
+
+
                 response.sendRedirect(request.getContextPath() + "/index?status=auction_success");
 
             }else { // validation error
@@ -84,6 +98,7 @@ public class AddAuction extends HttpServlet {
             }
         }
     }
+
 
     private void addAuction(Auction auction) throws Exception{
         auctionDAO.addAuction(auction);

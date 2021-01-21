@@ -75,7 +75,7 @@
                                     <c:choose>
                                         <c:when test="${tempAuction.opinion eq 0}">
                                             <!-- Rate form -->
-                                            <form method="post" action="rate">
+                                            <form method="post" action="rate" >
                                                 <input id="productId" name="productId" type="hidden"
                                                        value="${tempAuction.auctionID}">
                                                 <div class="form-check form-check-inline">
